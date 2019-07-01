@@ -2,19 +2,26 @@
 <v-container>
  
       <!-- About Me -->
-      <v-layout my-5>
-        <v-flex xs12 sm8>
+      <v-layout>
   <nav>
     <ul class="nav-container">
-      
-      <li class="nav-item"><router-link to="/">Life is Awesome</router-link></li>
+      <v-flex xs12>
+      <li class="nav-item"><router-link to="/home">Life is Awesome</router-link></li>
+      </v-flex>
+      <v-flex xs12>
       <li class="nav-item"><a href="#">About me</a></li>
+      </v-flex>
+      <v-flex xs12>
       <li class="nav-item"><router-link to="/portfolio">Portfolio</router-link></li>
+      </v-flex>
+      <v-flex xs12>
       <li class="nav-item"><a href="/post">Post</a></li>
+      </v-flex>
+      <v-flex xs12>
       <li class="nav-item"><a href="/login">Project</a></li>
+      </v-flex>    
     </ul>
   </nav>
-        </v-flex>
       </v-layout>
 </v-container>
 </template>
