@@ -1,13 +1,22 @@
 <template>
+<v-container>
+ 
+      <!-- About Me -->
+      <v-layout my-5>
+        <v-flex xs12 sm8>
   <nav>
     <ul class="nav-container">
-      <li class="nav-item"><a href="#">Life is Awesome</a></li>
+      
+      <li class="nav-item"><router-link to="/">Life is Awesome</router-link></li>
       <li class="nav-item"><a href="#">About me</a></li>
-      <li class="nav-item"><a href="#">Portfolio</a></li>
-      <li class="nav-item"><a href="#">Post</a></li>
-      <li class="nav-item"><a href="#">Project</a></li>
+      <li class="nav-item"><router-link to="/portfolio">Portfolio</router-link></li>
+      <li class="nav-item"><a href="/post">Post</a></li>
+      <li class="nav-item"><a href="/login">Project</a></li>
     </ul>
   </nav>
+        </v-flex>
+      </v-layout>
+</v-container>
 </template>
 
 <style>
