@@ -1,60 +1,52 @@
 <template>
-<v-container>
- 
-      <!-- About Me -->
-      <v-layout>
-  <nav>
-    <ul class="nav-container">
-      <v-flex xs12>
-      <li class="nav-item"><router-link to="/home">Life is Awesome</router-link></li>
-      </v-flex>
-      <v-flex xs12>
-      <li class="nav-item"><a href="#">About me</a></li>
-      </v-flex>
-      <v-flex xs12>
-      <li class="nav-item"><router-link to="/portfolio">Portfolio</router-link></li>
-      </v-flex>
-      <v-flex xs12>
-      <li class="nav-item"><a href="/post">Post</a></li>
-      </v-flex>
-      <v-flex xs12>
-      <li class="nav-item"><a href="/login">Project</a></li>
-      </v-flex>    
-    </ul>
-  </nav>
-      </v-layout>
-</v-container>
+  <v-layout>
+    <v-flex xs12>
+      <v-toolbar fixed>
+      <v-btn icon to="/">
+      <v-icon>home</v-icon>
+      </v-btn>
+        <v-toolbar-title>HanBeom Park</v-toolbar-title>
+        <v-spacer></v-spacer>
+
+        <v-toolbar-items class="hidden-xs-only">
+           <v-btn
+            v-for="item in menu"
+            :key="item.icon"
+            :to="item.link"
+            flat
+          >{{ item.title }}</v-btn>
+        </v-toolbar-items>
+
+        <v-menu class="hidden-sm-and-up">
+          <v-toolbar-side-icon slot="activator"><v-icon>reorder</v-icon></v-toolbar-side-icon>
+          <v-list>
+            <v-list-tile v-for="item in menu" :key="item.icon" :to="item.link">
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+               </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar>
+
+    </v-flex>
+  </v-layout>
 </template>
 
-<style>
 
-.nav-container{
-  z-index: 2;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: darkslategrey;
-  list-style-type: none;
+<script>
+export default {
+   name: 'Myheader',
+   props: {
+   },
+  data: () => ({
+    menu: [
+          { icon: 'home', title: 'HOME', link : "/" },
+          { icon: 'portfolio', title: 'PORTFILIO' , link : "/portfolio"},
+          { icon: 'post', title: 'POST' , link : "/post"},
+          { icon: 'login', title: 'LOGIN' , link : "/login"},
+        ],
+  })
 }
-.nav-item{
-  padding: 15px;
-  cursor: pointer;
-}
-.nav-item a{
-  text-align: center;
-  text-decoration: none;
-  color: white;
-}
-.nav-item:nth-child(1){
-  background-color: lightseagreen;
-}
-.nav-item:hover{
-  background-color: grey;
-}
-.nav-container{
-  position: fixed;
-  top: 0;
-}
-</style>
+
+</script>

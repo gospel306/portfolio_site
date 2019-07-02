@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Myheader></Myheader>
-
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
       <div style="line-height:1.2em;" slot="text">We will find a way.<br> We always have.</div>
     </ImgBanner>
@@ -44,14 +42,11 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <Myfooter></Myfooter>
     
   </div>
 </template>
 
 <script>
-import Myfooter from '../components/Myfooter'
-import Myheader from '../components/Myheader'
 import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
 import PostList from '../components/PostList'
@@ -60,8 +55,6 @@ import RepositoryList from '../components/RepositoryList'
 export default {
 	name: 'HomePage',
 	components: {
-    Myfooter,
-    Myheader,
 		ImgBanner,
 		PortfolioList,
 		PostList,
