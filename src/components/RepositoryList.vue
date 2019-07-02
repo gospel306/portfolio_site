@@ -1,4 +1,5 @@
 <template>
+<div id="repo">
   <v-layout column px-4>
     <v-flex v-for="i in repositories.length > limits ? limits : repositories.length">
       <v-divider v-if="i === 1"></v-divider>
@@ -6,6 +7,7 @@
       <v-divider></v-divider>
     </v-flex>
   </v-layout>
+</div>
 </template>
 
 <script>
@@ -41,3 +43,8 @@ export default {
 	}
 }
 </script>
+<style>
+#repo{
+	white-space: nowrap;
+}
+</style>

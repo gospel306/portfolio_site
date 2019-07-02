@@ -1,40 +1,65 @@
 <template>
-  <v-app>
-	
-	<Myheader/>
 
-	  <GoTop/>
-
-	
-
+  <v-app>        
+      <div id="warning_msg">
+   <v-alert :value="myFunction()" type="warning">
+     <v-icon>warning</v-icon> 해당 사이트는 크롬에 최적화 되어 있습니다.
+    </v-alert>
+   </div>
+   <Myheader/>
     <v-content>
+
       <router-view/>
     </v-content>
-	<Myfooter/>	
+     <GoTop/>
+
+   
+
+
+
+   <Myfooter/>   
   </v-app>
 </template>
 
 <script>
-
 import store from './store'
 import Myfooter from './components/Myfooter'
 import Myheader from './components/Myheader'
 import GoTop from '@inotom/vue-go-top';
 export default {
-	name: 'App',
-	store,
-	components: {
-	GoTop,
+   name: 'App',
+   store,
+   components: {
+   GoTop,
     Myfooter,
     Myheader,
-	},
-	data() {
+   },
+   data() {
 
-		return {
-			//
-		}
-	},
+      return {
+         //
+      }
+   },
+   methods:{
+    myFunction: function () {
+      var agt = navigator.userAgent.toLowerCase();       
+    if (agt.indexOf("chrome") != -1){
+       return false;
+      }else{
+         return true;
+      }
 
+   }
+   }
 }
 
+
 </script>
+<style>
+#warning_msg{
+   z-index:1000;
+   position: fixed;
+  bottom:0px; 
+  width: 100%;
+}
+</style>

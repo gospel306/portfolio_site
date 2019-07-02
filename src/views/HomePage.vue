@@ -1,16 +1,16 @@
 <template>
   <div>
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
-      <div style="line-height:1.2em;" slot="text">We will find a way.<br> We always have.</div>
+  
+      <div style="line-height:1.2em;" slot="text">Nothing is impossible"<br></div>
     </ImgBanner>
     <v-container>
- 
       <!-- About Me -->
       <v-layout my-5>
         <v-flex xs12 sm8>
           <h2 class="headline mb-3 text-xs-center">About Me</h2>
-          <p class="mr-4">안녕하세요, SSAFY 참가자 여러분!<br/>함께 프로젝트를 진행하게 되어서 기쁩니다. Vue는 어렵지 않습니다. 차근차근 하나씩 따라하다보면 어느새 멋진 블로그가
-            만들어져 있을겁니다! 모두 화이팅 하시고, 꼭 완성해서 좋은 평가 있길 바라겠습니다.</p>
+          <p class="mr-4">안녕하세요, 현재 SSAFY에서 교육을 받고 있는 박한범이라고 합니다!<br/>처음으로 Vue 프로젝트를 진행하게 되었습니다. 
+          어렵지만 차근차근 공부해나가서 Vue를 잘 사용하는 개발자가 되고 싶습니다. 잘 부탁 드립니다.</p>
         </v-flex>
         <v-flex hidden-xs-only sm4>
           <v-img :src="getImgUrl('profile.png')" aspect-ratio="1.5"/>
@@ -51,7 +51,6 @@ import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
 import PostList from '../components/PostList'
 import RepositoryList from '../components/RepositoryList'
-
 export default {
 	name: 'HomePage',
 	components: {
