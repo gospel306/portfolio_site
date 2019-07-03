@@ -1,53 +1,53 @@
 <template>
-  <v-layout mt-5 wrap>
-    <v-flex v-for="i in portfolios.length > limits ? limits : portfolios.length" xs12 sm6>
-      <Portfolio class="ma-3"
-              :date="portfolios[i - 1].created_at.toString()"
-              :title="portfolios[i - 1].title"
-              :body="portfolios[i - 1].body"
-              :imgSrc="portfolios[i - 1].img"
-      ></Portfolio>
-    </v-flex>
-
-    <v-flex xs12 text-xs-center round my-5 v-if="loadMore">
-      <v-btn color="info" dark v-on:click="loadMorePortfolios"><v-icon size="25" class="mr-2">fa-plus</v-icon> 더 보기</v-btn>
-    </v-flex>
-  </v-layout>
+  <div>
+    <div style="line-height:1.2em;font-size:3.2em; text-align:center;" slot="text">Add Portfolio<br></div>
+      <v-flex>
+          <v-text-field
+            label="Title"
+            outline
+			v-model="title"
+          ></v-text-field>
+        </v-flex>
+	  <v-layout>
+        <v-flex xs12 sm12 md12 >
+        <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+        </v-flex>
+      </v-layout>
+        <v-btn color="info" dark v-on:click="postPortfolio">등록하기</v-btn>
+        <v-btn color="info" dark to="portfolio">돌아가기</v-btn>
+     
+     
+  </div>
 </template>
+
 <script>
+    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Portfolio from '@/components/Portfolio'
 import FirebaseService from '@/services/FirebaseService'
-
-export default {
-	name: 'PortfolioWriter',
-	props: {
-		limits: {type: Number, default: 3},
-    loadMore: {type: Boolean, default: false}
-	},
-	data() {
-		return {
-			portfolios: []
-		}
-	},
-	components: {
-		Portfolio
-	},
-	mounted() {
-		this.getPortfolios()
-	},
-	methods: {
-		async getPortfolios() {
-			this.portfolios = await FirebaseService.getPortfolios()
+    export default {
+		name: 'app',
+        data() {
+            return {
+                editor: ClassicEditor,
+                editorData: '<p>Content of the editor.</p>',
+                editorConfig: {
+                    // The configuration of the editor.
+                }
+            };
 		},
-		loadMorePortfolios() {
-
+		methods:{
+			postPortfolio(){
+				alert(this.editorData);
+				alert(this.title);
+				this.$router.push('/');
+				//FirebaseService.postPortfolio(this.title,this.editorData,null);
+			}
+		}
     }
-	},
-}
 </script>
 <style>
-  .mw-700 {
-    max-width: 700px;
-    margin: auto;
-  }
+  .ck-editor__editable {
+    min-height: 500px;
+	width: 100%;
+   }
 </style>

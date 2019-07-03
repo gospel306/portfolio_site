@@ -1,7 +1,7 @@
 <template>
   <div>
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
-  
+    
       <div style="line-height:1.2em;" slot="text">Nothing is impossible"<br></div>
     </ImgBanner>
     <v-container>
@@ -9,11 +9,13 @@
       <v-layout my-5>
         <v-flex xs12 sm8>
           <h2 class="headline mb-3 text-xs-center">About Me</h2>
-          <p class="mr-4">안녕하세요, 현재 SSAFY에서 교육을 받고 있는 박한범이라고 합니다!<br/>처음으로 Vue 프로젝트를 진행하게 되었습니다. 
-          어렵지만 차근차근 공부해나가서 Vue를 잘 사용하는 개발자가 되고 싶습니다. 잘 부탁 드립니다.</p>
+          <p class="mr-4" style=" font-size: 15px; font-weight: 400; line-height: 32px; margin: 5 24px;">●이름 | 박한범 Park HanBeom<br/>●생년월일 | 1993.12.01<br/>●최종학력 | 순천향대학교 의료IT공학과 졸업<br/> 
+          ●자기소개 <br/> 현재 SSAFY 대전 캠퍼스에서 소프트웨어 교육을 받고 있습니다. 이번에는 Vue를 사용한 웹페이지 제작을 진행하고 있습니다!
+          아직 Vue가 서툴지만 열심히 공부해서 많이 배우고 싶습니다.<br/> </p>
+  
         </v-flex>
         <v-flex hidden-xs-only sm4>
-          <v-img :src="getImgUrl('profile.png')" aspect-ratio="1.5"/>
+          <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5"/>
         </v-flex>
       </v-layout>
 
@@ -21,6 +23,8 @@
       <v-layout my-5>
         <v-flex xs12>
           <h2 class="headline my-5 text-xs-center">Portfolio</h2>
+          <v-btn color="info" dark to="portfolioWriter" right="true"><v-icon size="25" class="mr-2">fa-plus</v-icon> 추가하기</v-btn>
+
           <PortfolioList></PortfolioList>
         </v-flex>
       </v-layout>
@@ -47,8 +51,10 @@
 </template>
 
 <script>
+
 import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
+
 import PostList from '../components/PostList'
 import RepositoryList from '../components/RepositoryList'
 export default {

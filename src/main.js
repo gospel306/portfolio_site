@@ -9,6 +9,9 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import browserDetect from 'vue-browser-detect-plugin'
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
+Vue.use( CKEditor );
 Vue.config.productionTip = false
 
 Vue.use(Vuetify, {

@@ -17,7 +17,9 @@
         white--text
         xs12
       >
-        &copy;2019 — <strong>Vuetify</strong>
+        &copy;2019 — Vue project<br/>
+        <strong>Posted by : Hanbeom Park </strong><br/>
+        <strong>Contact information: hb1398@naver.com</strong>
       </v-flex>
     </v-layout>
   </v-footer>
