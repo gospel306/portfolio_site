@@ -2,14 +2,14 @@
   <div>
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
     
-      <div style="line-height:1.2em;" slot="text">Nothing is impossible"<br></div>
+      <div style="line-height:1.2vw;" slot="text">Nothing is impossible<br></div>
     </ImgBanner>
     <v-container>
       <!-- About Me -->
       <v-layout my-5>
         <v-flex xs12 sm8>
           <h2 class="headline mb-3 text-xs-center">About Me</h2>
-          <p class="mr-4" style=" font-size: 15px; font-weight: 400; line-height: 32px; margin: 5 24px;">●이름 | 박한범 Park HanBeom<br/>●생년월일 | 1993.12.01<br/>●최종학력 | 순천향대학교 의료IT공학과 졸업<br/> 
+          <p class="mr-4" style=" font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;">●이름 | 박한범 Park HanBeom<br/>●생년월일 | 1993.12.01<br/>●최종학력 | 순천향대학교 의료IT공학과 졸업<br/> 
           ●자기소개 <br/> 현재 SSAFY 대전 캠퍼스에서 소프트웨어 교육을 받고 있습니다. 이번에는 Vue를 사용한 웹페이지 제작을 진행하고 있습니다!
           아직 Vue가 서툴지만 열심히 공부해서 많이 배우고 싶습니다.<br/> </p>
   
