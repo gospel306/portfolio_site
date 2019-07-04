@@ -42,12 +42,18 @@ export default {
    },
    methods:{
     myFunction: function () {
-      var agt = navigator.userAgent.toLowerCase();       
-    if (agt.indexOf("chrome") != -1){
+       var userAgent=navigator.userAgent.toLowerCase();
+     if(userAgent.indexOf('edge')>-1){
+       return true;
+     }else if(userAgent.indexOf('whale')>-1){
+       return true;
+     }else if(userAgent.indexOf('opr')>-1){
+       return true;
+     }else if(userAgent.indexOf('chrome')>-1){
        return false;
-      }else{
-         return true;
-      }
+     }else{
+       return true;
+     }
 
    }
    }
