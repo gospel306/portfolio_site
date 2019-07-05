@@ -37,8 +37,7 @@
 
 
 <script>
-//Haaaaaaa
-//aaaa/aa
+//H
 export default {
    name: 'Myheader',
    props: {
