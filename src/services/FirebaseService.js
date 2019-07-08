@@ -78,6 +78,6 @@ export default {
 		}).catch(function(error) {
 			console.error('[Facebook Login Error]', error)
 		})
-	},
-	
+	}
+
 }
