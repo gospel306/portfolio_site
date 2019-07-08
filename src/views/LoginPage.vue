@@ -70,13 +70,15 @@ export default {
 			this.$store.state.user = result.user
 		},
 		toggleSignIn() {
-      if (FirebaseService.auth().currentUser) {
+			var firebase=require('firebase')
+      if (firebase.auth().currentUser) {
         // [START signout]
-        FirebaseService.auth().signOut();
+        firebase.auth().signOut();
         // [END signout]
       } else {
         var email = this.email;
-        var password = this.password;
+		var password = this.password;
+		
         if (email==null||email.length < 4) {
           alert('Please enter an email address.');
           return;
@@ -87,7 +89,7 @@ export default {
         }
         // Sign in with email and pass.
         // [START authwithemail]
-        FirebaseService.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
