@@ -21,6 +21,7 @@
     "vue-over-body": "0.0.5",
     "vue-router": "^3.0.1",
     "vue-simplemde": "^0.5.1",
+    "vue-weather-widget": "^2.1.7",
     "vuetify": "^1.5.5",
     "vuex": "^3.0.1"
   },
