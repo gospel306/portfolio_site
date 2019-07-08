@@ -10,9 +10,9 @@
         <v-flex xs12 sm8>
           <h2 class="headline mb-3 text-xs-center">About Me</h2>
           <p class="mr-4" style=" font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;">●이름 | 박한범 Park HanBeom<br/>●생년월일 | 1993.12.01<br/>●최종학력 | 순천향대학교 의료IT공학과 졸업<br/> 
-          ●자기소개 <br/> 현재 SSAFY 대전 캠퍼스에서 소프트웨어 교육을 받고 있습니다. 이번에는 Vue를 사용한 웹페이지 제작을 진행하고 있습니다!
+          ●자기소개 <br/> {{text}}현재 SSAFY 대전 캠퍼스에서 소프트웨어 교육을 받고 있습니다. 이번에는 Vue를 사용한 웹페이지 제작을 진행하고 있습니다!
           아직 Vue가 서툴지만 열심히 공부해서 많이 배우고 싶습니다.<br/> </p>
-  
+           <button v-on:click="searchTerm">글 번역하기</button>
         </v-flex>
         <v-flex hidden-xs-only sm4>
           <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5"/>
@@ -51,7 +51,6 @@
 </template>
 
 <script>
-
 import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
 
