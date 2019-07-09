@@ -6,15 +6,27 @@
     >
       <div style="line-height:10vh;" slot="text1">
         <span class="banner_1">空手來空手去</span>
+        <p class="banner_1_2">(공수래공수거)</p>
       </div>
       <div style="line-height: 6vh;" slot="text2">
         <span class="banner_2">
-          살아가면서 아무리 재물을 탐하고
-          <br />권력을 좇아도 결국 모두 부질없으므로,
-          <br />아등바등 욕심부리며 살 필요가 없다.
+          <p>살아가면서 아무리 재물을 탐하고</p>
+          <p>권력을 좇아도 결국 모두 부질없으므로,</p>
+          <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
       </div>
     </ImgBanner>
+
+    <AboutUs
+      imgSrc="https://images.unsplash.com/photo-1489908990827-08a75c580832?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+    >
+      <div style="" slot="text1">
+        About Us
+      </div>
+      <div style="" slot="text2">
+        Hi?
+      </div>
+    </AboutUs>
 
     <v-container>
       <!-- About Me -->
@@ -31,36 +43,13 @@
           <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5" />
         </v-flex>
       </v-layout>
-
-      <!-- Portfolio -->
-      <!-- <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center">Portfolio</h2>
-          <v-btn color="info" dark to="portfolioWriter" right="true"><v-icon size="25" class="mr-2">fa-plus</v-icon> 추가하기</v-btn>
-
-          <PortfolioList></PortfolioList>
-        </v-flex>
-      </v-layout>-->
-      <!-- Post -->
-      <!-- <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center">Post</h2>
-          <PostList :column="2"></PostList>
-        </v-flex>
-      </v-layout>-->
-      <!-- Github -->
-      <!-- <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center">Project</h2>
-          <RepositoryList></RepositoryList>
-        </v-flex>
-      </v-layout>-->
     </v-container>
   </div>
 </template>
 
 <script>
 import ImgBanner from "../components/ImgBanner";
+import AboutUs from "../components/AboutUs";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
@@ -69,6 +58,7 @@ export default {
   name: "HomePage",
   components: {
     ImgBanner,
+    AboutUs,
     PortfolioList,
     PostList,
     RepositoryList
@@ -87,8 +77,13 @@ export default {
   font-family: "ZCOOL QingKe HuangYou", cursive;
   white-space: nowrap;
 }
+.banner_1_2 {
+  font-family: "Song Myung", serif;
+  white-space: nowrap;
+  font-size: 35px;
+}
 .banner_2 {
   font-family: "Song Myung", serif;
-  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
