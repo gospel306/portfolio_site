@@ -11,7 +11,7 @@
 	  <v-layout>
         <v-flex xs12 sm12 md12 >
         <v-btn class="ThumbnailBtn" color="info" @click="$refs.file.click()">썸네일 선택</v-btn>
-        <span class="ThumbnailLink"></span onloadedmetadata="">
+        <span class="ThumbnailLink"></span>
         <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
         </v-flex>
       </v-layout>
