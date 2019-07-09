@@ -7,6 +7,8 @@
       <template>
         <editor-content :editor="editor" />
       </template>
+    
+          <Writer></Writer>
     </v-container>
   </div>
 </template>
@@ -17,28 +19,19 @@ import PortfolioList from '../components/PortfolioList'
 import Writer from '../components/PortfolioWriter'
 import Portfolio from '@/components/Portfolio'
 import FirebaseService from '@/services/FirebaseService'
-import { Editor, EditorContent } from 'tiptap';
 
 export default {
 	name: 'PortfolioWriterPage',
 	components: {
     Writer,
 		ImgBanner,
-    PortfolioList,
-    EditorContent,
+		PortfolioList,
   },
-  data() {
-    return {
-      editor: null,
+  methods:{
+    
+    async postPortfolio(title, body, img){
+
     }
-  },
-  mounted() {
-    this.editor = new Editor({
-      content: '<p>this is just a ... </p>'
-    })
-  },
-  beforeDestroy() {
-    this.editor.destroy()
   }
 }
 </script>
