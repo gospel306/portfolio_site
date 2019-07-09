@@ -40,6 +40,7 @@ import FirebaseService from '@/services/FirebaseService'
     ,
     methods:{
       handleSignUp() {
+        var firebase=require('firebase')
         var email=this.myEmail;
         var password=this.myPassword;
       if (email==null||email.length < 4) {
@@ -52,7 +53,7 @@ import FirebaseService from '@/services/FirebaseService'
       }
       // Sign in with email and pass.
       // [START createwithemail]
-      FirebaseService.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
