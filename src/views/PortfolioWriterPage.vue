@@ -4,10 +4,6 @@
       <div style="line-height:1.2em;font-size:1.2em;" slot="text">Portfolio</div>
     </ImgBanner>
     <v-container>
-      <template>
-        <editor-content :editor="editor" />
-      </template>
-    
           <Writer></Writer>
     </v-container>
   </div>
@@ -28,7 +24,7 @@ export default {
 		PortfolioList,
   },
   methods:{
-    
+
     async postPortfolio(title, body, img){
 
     }
