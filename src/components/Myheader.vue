@@ -1,17 +1,17 @@
 <template>
   <v-layout>
     <v-flex xs12>
-      <v-toolbar fixed>
-      <v-btn icon to="/">
+      <v-toolbar class="blue-grey darken-3" fixed dark>
+      <v-btn icon large to="/">
       <v-icon>home</v-icon>
       </v-btn>
 
-      <v-btn color="info" @click="bookmark()">Book mark</v-btn>
-        <v-toolbar-title>HanBeom Park</v-toolbar-title>
+        <v-toolbar-title to="/" class="mainName">공수래공수거</v-toolbar-title>
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="hidden-xs-only">
            <v-btn
+           class="menus"
             v-for="item in menu"
             :key="item.icon"
             :to="item.link"
@@ -44,10 +44,10 @@ export default {
    },
   data: () => ({
     menu: [
-          { icon: 'home', title: 'HOME', link : "/" },
-          { icon: 'portfolio', title: 'PORTFILIO' , link : "/portfolio"},
-          { icon: 'post', title: 'POST' , link : "/post"},
-          { icon: 'login', title: 'LOGIN' , link : "/login"},
+          { icon: 'home', title: '홈', link : "/" },
+          { icon: 'portfolio', title: '포트폴리오' , link : "/portfolio"},
+          { icon: 'post', title: '포스트' , link : "/post"},
+          { icon: 'login', title: '로그인' , link : "/login"},
         ],
   }),
   methods:{
@@ -82,3 +82,15 @@ export default {
 }
 
 </script>
+
+<style>
+.mainName {
+  font-family: 'Song Myung';
+  /* font-size: 2vw; */
+}
+
+.menus {
+  font-family: 'Song Myung';
+  /* font-size: 1.5vw; */
+}
+</style>
