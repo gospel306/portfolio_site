@@ -18,8 +18,7 @@
         xs12
       >
         &copy;2019 — Vue project<br/>
-        <strong>Posted by : Hanbeom Park </strong><br/>
-        <strong>Contact information: hb1398@naver.com</strong>
+        <strong>Posted by : 공수래공수거 </strong><br/>
       </v-flex>
     </v-layout>
   </v-footer>

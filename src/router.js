@@ -37,6 +37,6 @@ export default new Router({
 			path: '/PortfolioWriter',
 			name: 'PortfolioWriter',
 			component: PortfolioWriterPage
-		}
+		},
   ]
 })
