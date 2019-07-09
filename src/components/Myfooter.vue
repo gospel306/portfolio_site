@@ -1,11 +1,11 @@
 <template>
-  <v-footer height="auto" color="primary lighten-1">
+  <v-footer height="auto" color="light-blue lighten-5">
     <v-layout justify-center row wrap>
       <weather
        api-key="f3878217fcb9bcfb41a13f5e6ec031c6"
        title="Weather"
-       latitude="36.355159"
-       longitude="127.298340"
+       :latitude="latitude"
+       :longitude="longitude"
        language="en"
        units="uk">
       </weather>
@@ -21,18 +21,21 @@
   import 'vue-weather-widget/dist/css/vue-weather-widget.css'
 
   export default{
+    data(){
+      return{
+        latitude: '',
+        longitude: ''
+      }
+    },
     components:{
       'weather': VueWeatherWidget
     },
-    methods:{
-      location:function(){
-        var lat = 0.0;
-        var lon = 0.0;
-        navigator.geolocation.getCurrentPosition(function(pos){
-          this.lat = pos.coords.latitude;
-          this.lon = pos.coords.longitude;
-        });
-      }
+    mounted(){
+      var vm = this
+      navigator.geolocation.getCurrentPosition(function(pos){
+        vm.latitude = pos.coords.latitude.toString()
+        vm.longitude = pos.coords.longitude.toString()
+      })
     }
   }
 </script>
