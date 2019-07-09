@@ -17,8 +17,6 @@
       </v-layout>
         <v-btn color="info" dark v-on:click="postPortfolio">등록하기</v-btn>
         <v-btn color="info" dark to="portfolio">돌아가기</v-btn>
-
-
   </div>
 </template>
 
