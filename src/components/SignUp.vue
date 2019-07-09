@@ -33,14 +33,19 @@
 </template>
 <script>
 import FirebaseService from '@/services/FirebaseService'
+import firebase from 'firebase/app';
+import 'firebase/auth';
   export default {
     data: () => ({
-      dialog: false
+      dialog: false,
+      myEmail: "",
+      myPassword: "",
+      
     })
     ,
     methods:{
       handleSignUp() {
-        var firebase=require('firebase')
+       
         var email=this.myEmail;
         var password=this.myPassword;
       if (email==null||email.length < 4) {
@@ -51,6 +56,14 @@ import FirebaseService from '@/services/FirebaseService'
         alert('Please enter a password.');
         return;
       }
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+      {
+       }else{
+         alert("You have entered an invalid email address!")
+          return;
+       }
+       alert(email);
+       alert(password);
       // Sign in with email and pass.
       // [START createwithemail]
       firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -60,15 +73,19 @@ import FirebaseService from '@/services/FirebaseService'
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
           alert('The password is too weak.');
-        } else {
+          //return;
+        } else{
           alert(errorMessage);
+         // return;
         }
         console.log(error);
         // [END_EXCLUDE]
       });
+      alert('회원가입이 완료되었습니다.');
       // [END createwithemail]
+      this.dialog=false;
     }
-    
+      
     }
   }
 </script>
