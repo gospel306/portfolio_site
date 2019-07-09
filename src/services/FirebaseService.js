@@ -7,12 +7,14 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-	projectId: 'elice-ssafy',
-	authDomain: 'elice-ssafy.firebaseapp.com',
-	apiKey: 'AIzaSyCax1KLYHHlLEoxNkRIW8efgUBWooyEB2Q',
-	databaseURL: 'https://elice-ssafy.firebaseio.com',
-	storageBucket: 'gs://elice-ssafy.appspot.com'
-}
+	apiKey: "AIzaSyAjZwi56UO4UFtdAfppl8on6EvhSVDOu0E",
+    authDomain: "webmobile-sub2-639ef.firebaseapp.com",
+    databaseURL: "https://webmobile-sub2-639ef.firebaseio.com",
+    projectId: "webmobile-sub2-639ef",
+    storageBucket: "webmobile-sub2-639ef.appspot.com",
+    messagingSenderId: "618885958205",
+    appId: "1:618885958205:web:ba895f153c557593"
+  }
 
 firebase.initializeApp(config)
 const firestore = firebase.firestore()
@@ -68,5 +70,16 @@ export default {
 		}).catch(function(error) {
 			console.error('[Google Login Error]', error)
 		})
+	},
+	loginWithFacebook() {
+		let provider = new firebase.auth.FacebookAuthProvider()
+		return firebase.auth().signInWithPopup(provider).then(function(result) {
+			let accessToken = result.credential.accessToken
+			let user = result.user
+			//return result
+		}).catch(function(error) {
+			console.error('[Facebook Login Error]', error)
+		})
 	}
+
 }
