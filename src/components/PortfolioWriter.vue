@@ -5,23 +5,25 @@
           <v-text-field
             label="Title"
             outline
-			v-model="title"
           ></v-text-field>
         </v-flex>
+        <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none" />
 	  <v-layout>
         <v-flex xs12 sm12 md12 >
+        <v-btn class="ThumbnailBtn" color="info" @click="$refs.file.click()">썸네일 선택</v-btn>
+        <span class="ThumbnailLink"></span onloadedmetadata="">
         <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
         </v-flex>
       </v-layout>
         <v-btn color="info" dark v-on:click="postPortfolio">등록하기</v-btn>
         <v-btn color="info" dark to="portfolio">돌아가기</v-btn>
-     
-     
+
+
   </div>
 </template>
 
 <script>
-    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Portfolio from '@/components/Portfolio'
 import FirebaseService from '@/services/FirebaseService'
     export default {
@@ -29,7 +31,7 @@ import FirebaseService from '@/services/FirebaseService'
         data() {
             return {
                 editor: ClassicEditor,
-                editorData: '<p>Content of the editor.</p>',
+                editorData: '',
                 editorConfig: {
                     // The configuration of the editor.
                 }
@@ -48,6 +50,6 @@ import FirebaseService from '@/services/FirebaseService'
 <style>
   .ck-editor__editable {
     min-height: 500px;
-	width: 100%;
+	  width: 100%;
    }
 </style>
