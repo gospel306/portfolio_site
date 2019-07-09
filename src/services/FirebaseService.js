@@ -7,11 +7,13 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-	projectId: 'elice-ssafy',
-	authDomain: 'elice-ssafy.firebaseapp.com',
-	apiKey: 'AIzaSyCax1KLYHHlLEoxNkRIW8efgUBWooyEB2Q',
-	databaseURL: 'https://elice-ssafy.firebaseio.com',
-	storageBucket: 'gs://elice-ssafy.appspot.com'
+	projectId: 'webmobile-sub2',
+    authDomain: "webmobile-sub2-639ef.firebaseapp.com",
+    databaseURL: "https://webmobile-sub2-639ef.firebaseio.com",
+    projectId: "webmobile-sub2-639ef",
+    storageBucket: "webmobile-sub2-639ef.appspot.com",
+    messagingSenderId: "618885958205",
+    appId: "1:618885958205:web:ba895f153c557593"
 }
 
 firebase.initializeApp(config)
