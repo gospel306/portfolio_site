@@ -7,9 +7,8 @@
  </v-layout>
 
   <v-layout align-center justify-center row fill-height>
-
     <v-flex xs5 text-xs-center>
-		<v-form @submit.prevent="onSignin">
+		<v-form>
 
                                 <!-- <v-layout row> -->
                                 <v-flex xs12>
@@ -23,7 +22,7 @@
 
                                 <v-flex xs12 class="py-3">
                                     <div class="text-xs-center">
-                                        <v-btn outline type="submit"  v-on:click="toggleSignIn" :disabled="loading" :loading="loading">
+                                        <v-btn outline type="submit"  v-on:click="toggleSignIn" >
                                             Sign in
                                             <v-icon right>lock_open</v-icon>
                                             <span slot="loader" class="custom-loader">
@@ -50,27 +49,33 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 import SignUp from '../components/SignUp'
+import firebase from 'firebase/app';
+import 'firebase/auth';
 export default {
 	name: 'LoginPage',
-	data() {
-		return {}
-	},
+  data: () => ({
+      email: "",
+      password: "",
+      
+    })
+    ,
 	components: {
 		SignUp
 	},
 	methods: {
+    
 		async loginWithGoogle() {
 			const result = await FirebaseService.loginWithGoogle()
-			this.$store.state.accessToken = result.credential.accessToken
-			this.$store.state.user = result.user
-		},
+      this.$store.state.accessToken = result.credential.accessToken
+      this.$store.state.user = result.user
+    },
 		async loginWithFacebook() {
 			const result = await FirebaseService.loginWithFacebook()
 			this.$store.state.accessToken = result.credential.accessToken
-			this.$store.state.user = result.user
+      this.$store.state.user = result.user
+      
 		},
 		toggleSignIn() {
-			var firebase=require('firebase')
       if (firebase.auth().currentUser) {
         // [START signout]
         firebase.auth().signOut();
@@ -105,6 +110,7 @@ export default {
         });
         // [END authwithemail]
       }
+      alert("로그인 성공")
       document.getElementById('quickstart-sign-in').disabled = true;
     }	
 
