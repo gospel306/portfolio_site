@@ -1,0 +1,34 @@
+[debug] [2019-07-09T08:37:31.617Z] ----------------------------------------------------------------------
+[debug] [2019-07-09T08:37:31.619Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\multicampus\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-07-09T08:37:31.619Z] CLI Version:   7.0.2
+[debug] [2019-07-09T08:37:31.619Z] Platform:      win32
+[debug] [2019-07-09T08:37:31.619Z] Node Version:  v10.16.0
+[debug] [2019-07-09T08:37:31.620Z] Time:          Tue Jul 09 2019 17:37:31 GMT+0900 (GMT+09:00)
+[debug] [2019-07-09T08:37:31.620Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-09T08:37:31.627Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-09T08:37:31.628Z] > authorizing via signed-in user
+[debug] [2019-07-09T08:37:31.628Z] [iam] checking project webmobile-sub2-639ef for permissions ["firebase.projects.get"]
+[debug] [2019-07-09T08:37:31.629Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/webmobile-sub2-639ef:testIamPermissions  
+
+[debug] [2019-07-09T08:37:32.608Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-09T08:37:32.609Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/webmobile-sub2-639ef  
+ 
+[debug] [2019-07-09T08:37:33.544Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\multicampus\Desktop\webmobile-sub2'...
+[info] 
+[warn] !  Your requested "node" version "8" doesn't match your global version "10"
+[debug] [2019-07-09T08:37:33.553Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/618885958205/clients/_:getWebAppConfig  
+ 
+[debug] [2019-07-09T08:37:33.553Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/618885958205:getServerAppConfig  
+ 
+[debug] [2019-07-09T08:37:34.197Z] <<< HTTP RESPONSE 200
+[info] +  functions: Emulator started at http://localhost:5001
+[debug] [2019-07-09T08:37:34.442Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "C:\Users\multicampus\Desktop\webmobile-sub2\functions" for Cloud Functions...
+[info] i  hosting: Serving hosting files from: dist
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-07-09T08:37:34.781Z] Functions runtime initialized.
+[debug] [2019-07-09T08:37:34.781Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-09T08:37:34.842Z] firebase-admin has been stubbed.

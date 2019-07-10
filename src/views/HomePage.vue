@@ -14,6 +14,8 @@
           <p>권력을 좇아도 결국 모두 부질없으므로,</p>
           <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
+        <button id="demo" v-on:click="translate(text)">글 번역하기</button>
+
       </div>
     </ImgBanner>
 
@@ -37,7 +39,6 @@
             class="mr-4"
             style=" font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;"
           >Hi</p>
-          <button v-on:click="searchTerm">글 번역하기</button>
         </v-flex>
         <v-flex hidden-xs-only sm4>
           <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5" />
@@ -56,6 +57,11 @@ import RepositoryList from "../components/RepositoryList";
 
 export default {
   name: "HomePage",
+  data() {
+    return {
+      text : '번역기능 확인하는 글'
+    }
+  },
   components: {
     ImgBanner,
     AboutUs,
@@ -66,6 +72,21 @@ export default {
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
+    },
+    translate: function(text){
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'ko',
+          target : 'en',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => { 
+        console.log(res.data.data.translations[0].translatedText)
+        document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
+      })
     }
   }
 };
@@ -87,3 +108,4 @@ export default {
   white-space: nowrap;
 }
 </style>
+>>>>>>> afd61f818c858908d66838d71173b4b3a85370b3
