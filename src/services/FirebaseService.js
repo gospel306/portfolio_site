@@ -7,7 +7,7 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-	projectId: 'webmobile-sub2',
+    apiKey: "AIzaSyAjZwi56UO4UFtdAfppl8on6EvhSVDOu0E",
     authDomain: "webmobile-sub2-639ef.firebaseapp.com",
     databaseURL: "https://webmobile-sub2-639ef.firebaseio.com",
     projectId: "webmobile-sub2-639ef",
@@ -16,6 +16,7 @@ const config = {
     appId: "1:618885958205:web:ba895f153c557593"
 }
 
+  // Initialize Firebase
 firebase.initializeApp(config)
 const firestore = firebase.firestore()
 
