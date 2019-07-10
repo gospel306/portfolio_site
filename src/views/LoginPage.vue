@@ -57,7 +57,7 @@ export default {
 			this.$store.state.accessToken = result.credential.accessToken
       this.$store.state.user = result.user
       
-    },
+    }
 
 	
 
