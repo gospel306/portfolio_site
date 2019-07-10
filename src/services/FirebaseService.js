@@ -76,7 +76,7 @@ export default {
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
 			let accessToken = result.credential.accessToken
 			let user = result.user
-			//return result
+			return result
 		}).catch(function(error) {
 			console.error('[Facebook Login Error]', error)
 		})

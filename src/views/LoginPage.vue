@@ -74,17 +74,20 @@ export default {
 			this.$store.state.accessToken = result.credential.accessToken
       this.$store.state.user = result.user
       
-		},
-		toggleSignIn() {
+    },
+
+	toggleSignIn() {
+    var that=this;
       if (firebase.auth().currentUser) {
         // [START signout]
         firebase.auth().signOut();
         // [END signout]
+        
       } else {
         var email = this.email;
 		var password = this.password;
 		
-        if (email==null||email.length < 4) {
+      if (email==null||email.length < 4) {
           alert('Please enter an email address.');
           return;
         }
@@ -92,12 +95,26 @@ export default {
           alert('Please enter a password.');
           return;
         }
+              if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+      {
+       }else{
+         alert("You have entered an invalid email address!")
+          return;
+       }
         // Sign in with email and pass.
         // [START authwithemail]
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+        			//this.$store.state.accessToken = result.credential.accessToken
+			        //this.$store.state.user = result.user
+            alert("로그인 성공!")
+            alert(result.credential.accessToken)
+            that.$router.push('/') ;
+      }).catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
+          alert(errorMessage);
+          alert("로그인 실패!")
           // [START_EXCLUDE]
           if (errorCode === 'auth/wrong-password') {
             alert('Wrong password.');
@@ -105,13 +122,14 @@ export default {
             alert(errorMessage);
           }
           console.log(error);
-          document.getElementById('quickstart-sign-in').disabled = false;
           // [END_EXCLUDE]
         });
+          this.$router.push('/') ;
         // [END authwithemail]
       }
-      alert("로그인 성공")
-      document.getElementById('quickstart-sign-in').disabled = true;
+     
+
+      
     }	
 
 	},
