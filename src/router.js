@@ -8,6 +8,7 @@ import PortfolioWriterPage from './views/PortfolioWriterPage.vue'
 
 Vue.use(Router)
 
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -36,6 +37,6 @@ export default new Router({
 			path: '/PortfolioWriter',
 			name: 'PortfolioWriter',
 			component: PortfolioWriterPage
-		}
+		},
   ]
 })
