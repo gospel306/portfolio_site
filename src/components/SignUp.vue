@@ -2,7 +2,7 @@
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">Sign Up</v-btn>
+        <v-btn color="#008080" dark v-on="on">Sign Up</v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -25,7 +25,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat v-on:click="handleSignUp">Save</v-btn>
+          <v-btn color="blue darken-1" flat v-on:click="handleSignUp">Sign Up</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -35,6 +35,7 @@
 import FirebaseService from '@/services/FirebaseService'
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { async } from 'q';
   export default {
     data: () => ({
       dialog: false,
@@ -44,8 +45,8 @@ import 'firebase/auth';
     })
     ,
     methods:{
-      handleSignUp() {
-       
+     handleSignUp() {
+        var that=this;
         var email=this.myEmail;
         var password=this.myPassword;
       if (email==null||email.length < 4) {
@@ -62,28 +63,34 @@ import 'firebase/auth';
          alert("You have entered an invalid email address!")
           return;
        }
-       alert(email);
-       alert(password);
+
       // Sign in with email and pass.
       // [START createwithemail]
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function()
+      {
+          alert('회원가입이 완료되었습니다.');
+      // [END createwithemail]
+      
+      that.dialog=false;
+      that.myEmail="";
+      that.myPassword="";
+    
+      }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
           alert('The password is too weak.');
-          //return;
+          return;
         } else{
           alert(errorMessage);
-         // return;
+          return;
         }
+      
         console.log(error);
         // [END_EXCLUDE]
       });
-      alert('회원가입이 완료되었습니다.');
-      // [END createwithemail]
-      this.dialog=false;
     }
       
     }
