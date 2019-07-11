@@ -8,11 +8,6 @@
 
   <v-layout align-center justify-center row fill-height>
     <v-flex xs5 text-xs-center>
-		
-									
-									
-                  
-
       <v-layout align-center justify-center row fill-height elevation-5 style="min-height:500px;" white pa-4>
         <v-flex xs12 text-xs-center>
           <SignIn></SignIn>
@@ -27,6 +22,8 @@
 </template>
 
 <script>
+const axios = require('axios')
+
 import FirebaseService from '@/services/FirebaseService'
 import SignUp from '../components/SignUp'
 import SignIn from '../components/SignIn'
@@ -34,17 +31,20 @@ import SignIn from '../components/SignIn'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 export default {
-	name: 'LoginPage',
+  name: 'LoginPage',
+  mounted(){
+    this.aa()
+  },
   data: () => ({
       email: "",
       password: "",
       
-    })
-    ,
+  }),
 	components: {
     SignUp,
     SignIn
-	},
+  },
+  
 	methods: {
     
 		async loginWithGoogle() {
@@ -57,16 +57,11 @@ export default {
 			this.$store.state.accessToken = result.credential.accessToken
       this.$store.state.user = result.user
       
+    },
+    aa : function() {
+      console.log('azz')
+      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='로그인 페이지 방문'")
     }
-
-	
-
-      
-    
-
-	},
-	mounted() {
-		console.log(this.$store.state)
 	}
 }
 </script>

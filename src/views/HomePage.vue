@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- 메인 이미지 배너 -->
+    <!-- 1. 메인 이미지 배너 -->
     <ImgBanner
       imgSrc="https://images.unsplash.com/photo-1508157942875-586a83457569?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80"
     >
@@ -10,53 +10,20 @@
       </div>
       <div style="line-height: 6vh;" slot="text2">
         <span class="banner_2">
+          <p>모든 사람은 빈 손으로 태어나 빈 손으로 떠난다.</p>
           <p>살아가면서 아무리 재물을 탐하고</p>
           <p>권력을 좇아도 결국 모두 부질없으므로,</p>
           <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
-        <button id="demo" v-on:click="translate(text)">글 번역하기</button>
       </div>
     </ImgBanner>
 
-    <!-- <AboutUs
-      imgSrc="https://images.unsplash.com/photo-1547202777-08ce4cf2fc15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-    >
-      <div style="" slot="text1">
-        About Us
-      </div>
-      <div style="" slot="text2">
-        Hi?
-      </div>
-    </AboutUs>-->
+    <!-- 2. About Us -->
+    <AboutUs></AboutUs>
+    
+    <!-- 3. 기능 링크 -->
+    <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
 
-    <v-img
-      src="https://images.unsplash.com/photo-1547202777-08ce4cf2fc15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-      aspect-ratio="1.7"
-      min-height="720"
-      max-height="700"
-    >
-      <!-- About Me -->
-      <v-layout my-5 align-center justify-center row fill-height>
-        <v-flex xs12>
-          <h2 class="mb-3 display-2 text-xs-center">About Us</h2>
-          <p
-            class=""
-            style="font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;"
-          >
-            Hi
-            <br />Hi
-            <br />Hi
-            <br />Hi
-            <br />Hi
-            <br />Hi
-            <br />Hi
-          </p>
-        </v-flex>
-        <!-- <v-flex hidden-xs-only sm4>
-          <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5" />
-        </v-flex> -->
-      </v-layout>
-    </v-img>
   </div>
 </template>
 
@@ -67,7 +34,7 @@ import AboutUs from "../components/AboutUs";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
-import Graph from "../components/RepositoryGraph";
+// import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
   data() {
@@ -75,33 +42,39 @@ export default {
       text: "번역기능 확인하는 글"
     };
   },
+  mounted(){
+    this.ax()
+  },
   components: {
     ImgBanner,
     AboutUs,
     PortfolioList,
     PostList,
     RepositoryList,
-    Graph
+    // Graph
   },
+
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
     },
     translate: function(text) {
       axios({
-        method: "post",
-        url: "https://translation.googleapis.com/language/translate/v2",
-        params: {
-          source: "ko",
-          target: "en",
-          q: text,
-          key: "AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA"
-        }
-      }).then(res => {
-        console.log(res.data.data.translations[0].translatedText);
-        document.getElementById("demo").innerHTML =
-          res.data.data.translations[0].translatedText;
-      });
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'ko',
+          target : 'en',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => { 
+        console.log(res.data.data.translations[0].translatedText)
+        document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
+      })
+    },
+    ax : function() {
+      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
     }
   }
 };
