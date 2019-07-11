@@ -4,18 +4,19 @@
     <v-flex>
       <v-text-field
       label="Title"
-      outline v-model="title"
+      v-model="title"
+      outline
       ></v-text-field>
     </v-flex>
     <v-layout>
       <v-flex xs12 sm12 md12 >
-        <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none" />
+        <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none"/>
         <v-btn class="ThumbnailBtn" color="info" @click="$refs.file.click()">썸네일 선택</v-btn>
         <span class="ThumbnailLink"></span>
         <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
       </v-flex>
     </v-layout>
-    <v-btn color="info" dark v-on:click="postPortfolio">등록하기</v-btn>
+    <v-btn color="info" dark @click="postPortfolio">등록하기</v-btn>
     <v-btn color="info" dark to="portfolio">돌아가기</v-btn>
 
   </div>
@@ -23,11 +24,10 @@
 
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Portfolio from '@/components/Portfolio';
-import FirebaseService from '@/services/FirebaseService';
-import $ from 'jquery';
-
+import Portfolio from '@/components/Portfolio'
+import FirebaseService from '@/services/FirebaseService'
 export default {
+<<<<<<< HEAD
   mounted(){
     $('input[type=file]').on("change", function () {
         var $files = $(this).get(0).files;
@@ -83,6 +83,8 @@ export default {
         }
     });
   },
+=======
+>>>>>>> c8435e98725015ba037cc61b61c2a4fae8382bc8
   name: 'app',
   data() {
     return {
@@ -90,14 +92,19 @@ export default {
       editorData: '<p>Content of the editor.</p>',
       editorConfig: {
         // The configuration of the editor.
-      },
+      }
     };
   },
   methods:{
     postPortfolio(){
+<<<<<<< HEAD
       var imgLink = $(".ThumbnailLink").val();
       alert(imgLink);
       FirebaseService.postPortfolio(this.title,this.editorData,imgLink);
+=======
+      //this.$router.push('/');
+      FirebaseService.postPortfolio(this.title,this.editorData,res.data.link);
+>>>>>>> c8435e98725015ba037cc61b61c2a4fae8382bc8
     }
   }
 }
