@@ -36,11 +36,8 @@ export default {
   },
   methods:{
     postPost(){
-      alert(this.title);
-      alert(this.editorData);
-      
       FirebaseService.postPost(this.title,this.editorData);
-    
+      this.$router.push('/');
     }
   }
 }
