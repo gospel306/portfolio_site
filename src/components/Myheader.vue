@@ -37,7 +37,6 @@
 
 
 <script>
-//H
 export default {
    name: 'Myheader',
    props: {
