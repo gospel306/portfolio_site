@@ -10,6 +10,8 @@
 </template>
 
 <script>
+const axios = require('axios')
+
 import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
 import Writer from '../components/PortfolioWriter'
@@ -27,6 +29,14 @@ export default {
 
     async postPortfolio(title, body, img){
 
+    },
+    mounted(){
+      this.ax()
+    },
+    methods :{
+      ax : function() {
+        axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='포트폴리오 작성 페이지 방문'")
+      }
     }
   }
 }

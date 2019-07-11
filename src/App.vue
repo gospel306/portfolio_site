@@ -22,6 +22,8 @@
 </template>
 
 <script>
+const axios = require('axios')
+
 import store from './store'
 import Myfooter from './components/Myfooter'
 import Myheader from './components/Myheader'

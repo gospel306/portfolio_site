@@ -15,10 +15,8 @@
           <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
         <button id="demo" v-on:click="translate(text)">글 번역하기</button>
-
       </div>
     </ImgBanner>
-
     <AboutUs
       imgSrc="https://images.unsplash.com/photo-1489908990827-08a75c580832?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
     >
@@ -63,6 +61,9 @@ export default {
       text : '번역기능 확인하는 글'
     }
   },
+  mounted(){
+    this.ax()
+  },
   components: {
     ImgBanner,
     AboutUs,
@@ -70,6 +71,7 @@ export default {
     PostList,
     RepositoryList
   },
+
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
@@ -87,7 +89,11 @@ export default {
       }).then(res => { 
         console.log(res.data.data.translations[0].translatedText)
         document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
-      })
+      }),
+    axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='번역'")
+    },
+    ax : function() {
+      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
     }
   }
 };
