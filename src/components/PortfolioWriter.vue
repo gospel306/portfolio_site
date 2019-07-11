@@ -4,8 +4,7 @@
     <v-flex>
       <v-text-field
       label="Title"
-      v-model="title"
-      outline
+      outline v-model="title"
       ></v-text-field>
     </v-flex>
     <v-layout>
@@ -25,9 +24,67 @@
 
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Portfolio from '@/components/Portfolio'
-import FirebaseService from '@/services/FirebaseService'
+import Portfolio from '@/components/Portfolio';
+import FirebaseService from '@/services/FirebaseService';
+import $ from 'jquery';
+
 export default {
+  mounted(){
+    $('input[type=file]').on("change", function () {
+        var $files = $(this).get(0).files;
+        if ($files.length) {
+
+            // Reject big files
+            if ($files[0].size > $(this).data("max-size") * 1024) {
+                console.log("Please select a smaller file");
+                return false;
+            }
+
+            // Replace ctrlq with your own API key
+            var apiUrl = 'https://api.imgur.com/3/image';
+            var apiKey = '5029977fb779471';
+
+            var formData = new FormData();
+            formData.append("image", $files[0]);
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": apiUrl,
+                "method": "POST",
+                "datatype": "json",
+                "headers": {
+                    "Authorization": "Client-ID " + apiKey
+                },
+                "processData": false,
+                "contentType": false,
+                "data": formData,
+                "type": 'POST',
+                beforeSend: function (xhr) {
+                    console.log("Uploading");
+                },
+                success: function (res) {
+                    console.log(res.data.link);
+                    that.Imglink=res.data.link;
+                    Swal.fire({
+                      type: 'success',
+                      title: 'Success!!!',
+                      text: '썸네일이 해당 링크에 업로드 되었습니다.',
+                      footer: '<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>'
+                    })
+                    $(".ThumbnailBtn").html('선택 완료');
+                    $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>');
+                },
+                error: function () {
+                    alert("Failed");
+                }
+            }
+            $.ajax(settings).done(function (response) {
+                console.log("Done");
+            });
+        }
+    });
+  },
   name: 'app',
   data() {
     return {
@@ -35,13 +92,12 @@ export default {
       editorData: '<p>Content of the editor.</p>',
       editorConfig: {
         // The configuration of the editor.
-      }
+      },
     };
   },
   methods:{
     postPortfolio(){
-      //this.$router.push('/');
-      FirebaseService.postPortfolio(this.title,this.editorData,res.data.link);
+      FirebaseService.postPortfolio(this.title,this.editorData,null);
     }
   }
 }
