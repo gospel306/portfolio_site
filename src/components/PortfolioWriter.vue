@@ -4,18 +4,19 @@
     <v-flex>
       <v-text-field
       label="Title"
+      v-model="title"
       outline
       ></v-text-field>
     </v-flex>
     <v-layout>
       <v-flex xs12 sm12 md12 >
-        <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none" />
+        <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none"/>
         <v-btn class="ThumbnailBtn" color="info" @click="$refs.file.click()">썸네일 선택</v-btn>
         <span class="ThumbnailLink"></span>
         <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
       </v-flex>
     </v-layout>
-    <v-btn color="info" dark v-on:click="postPortfolio">등록하기</v-btn>
+    <v-btn color="info" dark @click="postPortfolio">등록하기</v-btn>
     <v-btn color="info" dark to="portfolio">돌아가기</v-btn>
 
 
@@ -39,10 +40,8 @@ export default {
   },
   methods:{
     postPortfolio(){
-      alert(this.editorData);
-      alert(this.title);
-      this.$router.push('/');
-      //FirebaseService.postPortfolio(this.title,this.editorData,null);
+      //this.$router.push('/');
+      FirebaseService.postPortfolio(this.title,this.editorData,res.data.link);
     }
   }
 }
