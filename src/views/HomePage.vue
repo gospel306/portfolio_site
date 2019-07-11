@@ -84,7 +84,7 @@ export default {
           q : text,
           key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
         },
-      }).then(res => { 
+      }).then(res => {
         console.log(res.data.data.translations[0].translatedText)
         document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
       })
@@ -109,4 +109,3 @@ export default {
   white-space: nowrap;
 }
 </style>
->>>>>>> afd61f818c858908d66838d71173b4b3a85370b3
