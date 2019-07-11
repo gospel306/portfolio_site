@@ -11,13 +11,7 @@
     "@ckeditor/ckeditor5-vue": "^1.0.0-beta.2",
     "@inotom/vue-go-top": "^1.1.0",
     "@jeremyhamm/vue-slider": "^0.1.16",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     "apexcharts": "^3.8.2",
->>>>>>> d905f8959bcdd033c65bb76b4892ad6ea26eaaee
->>>>>>> 3b120d1f9da405fa955e375e0f9b1a4a89f87ac3
     "array-unique": "^0.3.2",
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
