@@ -60,7 +60,6 @@ export default {
     },
     translate: function(text) {
       axios({
-<<<<<<< HEAD
         method : 'post',
         url : 'https://translation.googleapis.com/language/translate/v2',
         params  :{
@@ -72,26 +71,10 @@ export default {
       }).then(res => { 
         console.log(res.data.data.translations[0].translatedText)
         document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
-      }),
-    axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='번역'")
+      })
     },
     ax : function() {
       axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
-=======
-        method: "post",
-        url: "https://translation.googleapis.com/language/translate/v2",
-        params: {
-          source: "ko",
-          target: "en",
-          q: text,
-          key: "AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA"
-        }
-      }).then(res => {
-        console.log(res.data.data.translations[0].translatedText);
-        document.getElementById("demo").innerHTML =
-          res.data.data.translations[0].translatedText;
-      });
->>>>>>> e8ef29470a16c4011c7af6416f8c9936fc38fd60
     }
   }
 };
