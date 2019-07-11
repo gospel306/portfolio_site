@@ -12,24 +12,21 @@
 
    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans%7CJua%7CNoto+Sans+KR%7CSong+Myung%7CZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
-   <!-- Image upload script -->
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
-
    <script>
      // Your web app's Firebase configuration
+
      var firebaseConfig = {
-       apiKey: "AIzaSyAjZwi56UO4UFtdAfppl8on6EvhSVDOu0E",
-       authDomain: "webmobile-sub2-639ef.firebaseapp.com",
-       databaseURL: "https://webmobile-sub2-639ef.firebaseio.com",
-       projectId: "webmobile-sub2-639ef",
-       storageBucket: "webmobile-sub2-639ef.appspot.com",
-       messagingSenderId: "618885958205",
-       appId: "1:618885958205:web:ba895f153c557593"
-     };
-     // Initialize Firebase
-     firebase.initializeApp(firebaseConfig);
+    apiKey: "AIzaSyAjZwi56UO4UFtdAfppl8on6EvhSVDOu0E",
+    authDomain: "webmobile-sub2-639ef.firebaseapp.com",
+    databaseURL: "https://webmobile-sub2-639ef.firebaseio.com",
+    projectId: "webmobile-sub2-639ef",
+    storageBucket: "webmobile-sub2-639ef.appspot.com",
+    messagingSenderId: "618885958205",
+    appId: "1:618885958205:web:ba895f153c557593"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+     
 
  window.fbAsyncInit = function() {
    FB.init({
@@ -38,6 +35,14 @@
      xfbml      : true,
      version    : 'v3.3'
    });
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '442777159638290',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.3'
+    });
 
    FB.AppEvents.logPageView();
 
@@ -61,4 +66,78 @@
    <div id="app"></div>
    <!-- built files will be auto injected -->
  </body>
+</html>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but ssafy doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+
+
+
+    <!-- Image upload script -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script>
+    $("document").ready(function () {
+        $('input[type=file]').on("change", function () {
+
+            var $files = $(this).get(0).files;
+            if ($files.length) {
+
+                // Reject big files
+                if ($files[0].size > $(this).data("max-size") * 1024) {
+                    console.log("Please select a smaller file");
+                    return false;
+                }
+
+                // Replace ctrlq with your own API key
+                var apiUrl = 'https://api.imgur.com/3/image';
+                var apiKey = '5029977fb779471';
+
+                var formData = new FormData();
+                formData.append("image", $files[0]);
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": apiUrl,
+                    "method": "POST",
+                    "datatype": "json",
+                    "headers": {
+                        "Authorization": "Client-ID " + apiKey
+                    },
+                    "processData": false,
+                    "contentType": false,
+                    "data": formData,
+                    "type": 'POST',
+                    beforeSend: function (xhr) {
+                        console.log("Uploading");
+                    },
+                    success: function (res) {
+                        console.log(res.data.link);
+                        Swal.fire({
+                          type: 'success',
+                          title: 'Success!!!',
+                          text: '썸네일이 해당 링크에 업로드 되었습니다.',
+                          footer: '<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>'
+                        })
+                        $(".ThumbnailBtn").html('선택 완료');
+                        $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>');
+                    },
+                    error: function () {
+                        alert("Failed");
+                    }
+                }
+                $.ajax(settings).done(function (response) {
+                    console.log("Done");
+                });
+            }
+        });
+    });
+  </script>
+  </body>
 </html>
