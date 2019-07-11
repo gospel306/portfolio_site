@@ -15,12 +15,11 @@
           <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
         <button id="demo" v-on:click="translate(text)">글 번역하기</button>
-
       </div>
     </ImgBanner>
 
-    <AboutUs
-      imgSrc="https://images.unsplash.com/photo-1489908990827-08a75c580832?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+    <!-- <AboutUs
+      imgSrc="https://images.unsplash.com/photo-1547202777-08ce4cf2fc15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
     >
       <div style="" slot="text1">
         About Us
@@ -28,65 +27,81 @@
       <div style="" slot="text2">
         Hi?
       </div>
-    </AboutUs>
+    </AboutUs>-->
 
-    <v-container>
+    <v-img
+      src="https://images.unsplash.com/photo-1547202777-08ce4cf2fc15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+      aspect-ratio="1.7"
+      min-height="720"
+      max-height="700"
+    >
       <!-- About Me -->
-      <v-layout my-5>
-        <v-flex xs12 sm8>
-          <h2 class="headline mb-3 text-xs-center">About Us</h2>
+      <v-layout my-5 align-center justify-center row fill-height>
+        <v-flex xs12>
+          <h2 class="mb-3 display-2 text-xs-center">About Us</h2>
           <p
-            class="mr-4"
-            style=" font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;"
-          >Hi</p>
+            class=""
+            style="font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;"
+          >
+            Hi
+            <br />Hi
+            <br />Hi
+            <br />Hi
+            <br />Hi
+            <br />Hi
+            <br />Hi
+          </p>
         </v-flex>
-        <v-flex hidden-xs-only sm4>
+        <!-- <v-flex hidden-xs-only sm4>
           <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5" />
-        </v-flex>
+        </v-flex> -->
       </v-layout>
-    </v-container>
+    </v-img>
   </div>
 </template>
 
 <script>
+const axios = require('axios')
 import ImgBanner from "../components/ImgBanner";
 import AboutUs from "../components/AboutUs";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
-
+import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
   data() {
     return {
-      text : '번역기능 확인하는 글'
-    }
+      text: "번역기능 확인하는 글"
+    };
   },
   components: {
     ImgBanner,
     AboutUs,
     PortfolioList,
     PostList,
-    RepositoryList
+    RepositoryList,
+    Graph
   },
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
     },
-    translate: function(text){
+    translate: function(text) {
       axios({
-        method : 'post',
-        url : 'https://translation.googleapis.com/language/translate/v2',
-        params  :{
-          source : 'ko',
-          target : 'en',
-          q : text,
-          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
-        },
-      }).then(res => { 
-        console.log(res.data.data.translations[0].translatedText)
-        document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
-      })
+        method: "post",
+        url: "https://translation.googleapis.com/language/translate/v2",
+        params: {
+          source: "ko",
+          target: "en",
+          q: text,
+          key: "AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA"
+        }
+      }).then(res => {
+        console.log(res.data.data.translations[0].translatedText);
+        document.getElementById("demo").innerHTML =
+          res.data.data.translations[0].translatedText;
+      });
     }
   }
 };
@@ -94,6 +109,9 @@ export default {
 
 
 <style>
+.body {
+  font-family: "Song Myung", serif;
+}
 .banner_1 {
   font-family: "ZCOOL QingKe HuangYou", cursive;
   white-space: nowrap;
@@ -108,4 +126,3 @@ export default {
   white-space: nowrap;
 }
 </style>
->>>>>>> afd61f818c858908d66838d71173b4b3a85370b3

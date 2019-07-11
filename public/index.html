@@ -8,7 +8,8 @@
    <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico" type="image/x-icon"/>
    <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
    <!-- <link rel="icon" type="image/png" sizes="96x96" href="./favi.png"> -->
-   <title>ssafy</title>
+   <title>空手來空手去</title>
+
    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans%7CJua%7CNoto+Sans+KR%7CSong+Myung%7CZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
    <script>
@@ -35,29 +36,27 @@
      version    : 'v3.3'
    });
 
-   FB.AppEvents.logPageView();
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '442777159638290',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.3'
+    });
 
- };
+    FB.AppEvents.logPageView();
 
- (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  };
 
-   </script>
- </head>
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
- <body>
-   <noscript>
-     <strong>We're sorry but ssafy doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-   </noscript>
-   <div id="app"></div>
-   <!-- built files will be auto injected -->
- </body>
-</html>
+    </script>
   </head>
   <body>
     <noscript>
@@ -70,6 +69,8 @@
 
 
     <!-- Image upload script -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
     $("document").ready(function () {
         $('input[type=file]').on("change", function () {
@@ -113,7 +114,7 @@
                           title: 'Success!!!',
                           text: '썸네일이 해당 링크에 업로드 되었습니다.',
                           footer: '<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>'
-                        })
+                        });
                         $(".ThumbnailBtn").html('선택 완료');
                         $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>');
                     },
@@ -130,4 +131,3 @@
   </script>
   </body>
 </html>
->>>>>>> afd61f818c858908d66838d71173b4b3a85370b3
