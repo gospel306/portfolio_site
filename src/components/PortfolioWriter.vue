@@ -18,7 +18,6 @@
     <v-btn color="info" dark v-on:click="postPortfolio">등록하기</v-btn>
     <v-btn color="info" dark to="portfolio">돌아가기</v-btn>
 
-
   </div>
 </template>
 
@@ -65,7 +64,6 @@ export default {
                 },
                 success: function (res) {
                     console.log(res.data.link);
-                    that.Imglink=res.data.link;
                     Swal.fire({
                       type: 'success',
                       title: 'Success!!!',
@@ -97,7 +95,9 @@ export default {
   },
   methods:{
     postPortfolio(){
-      FirebaseService.postPortfolio(this.title,this.editorData,null);
+      var imgLink = $(".ThumbnailLink").val();
+      alert(imgLink);
+      FirebaseService.postPortfolio(this.title,this.editorData,imgLink);
     }
   }
 }
