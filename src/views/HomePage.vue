@@ -56,17 +56,30 @@
           <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5" />
         </v-flex> -->
       </v-layout>
+<<<<<<< HEAD
     </v-img>
+=======
+    </v-container>
+    <v-container>
+    <v-layout my-8>
+      <v-flex hidden-xs-only sm12>
+        <a href="https://lab.ssafy.com/gospel306/test"><h2 class="headline mb-3 text-xs-center">Repository</h2></a>
+        <Graph/>
+      </v-flex>
+    </v-layout>
+    </v-container>
+>>>>>>> 3b120d1f9da405fa955e375e0f9b1a4a89f87ac3
   </div>
 </template>
 
 <script>
+const axios = require('axios')
 import ImgBanner from "../components/ImgBanner";
 import AboutUs from "../components/AboutUs";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
-
+import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
   data() {
@@ -79,7 +92,8 @@ export default {
     AboutUs,
     PortfolioList,
     PostList,
-    RepositoryList
+    RepositoryList,
+    Graph
   },
   methods: {
     getImgUrl(img) {
