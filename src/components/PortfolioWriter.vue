@@ -27,7 +27,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Portfolio from '@/components/Portfolio'
 import FirebaseService from '@/services/FirebaseService'
 export default {
-<<<<<<< HEAD
   mounted(){
     $('input[type=file]').on("change", function () {
         var $files = $(this).get(0).files;
@@ -83,8 +82,6 @@ export default {
         }
     });
   },
-=======
->>>>>>> c8435e98725015ba037cc61b61c2a4fae8382bc8
   name: 'app',
   data() {
     return {
@@ -97,14 +94,9 @@ export default {
   },
   methods:{
     postPortfolio(){
-<<<<<<< HEAD
       var imgLink = $(".ThumbnailLink").val();
       alert(imgLink);
       FirebaseService.postPortfolio(this.title,this.editorData,imgLink);
-=======
-      //this.$router.push('/');
-      FirebaseService.postPortfolio(this.title,this.editorData,res.data.link);
->>>>>>> c8435e98725015ba037cc61b61c2a4fae8382bc8
     }
   }
 }
