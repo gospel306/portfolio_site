@@ -60,7 +60,7 @@
     <v-container>
     <v-layout my-8>
       <v-flex hidden-xs-only sm12>
-        <a href="https://lab.ssafy.com/gospel306/test"><h2 class="headline mb-3 text-xs-center">Repository</h2></a>
+        <a href="https://lab.ssafy.com/HanBeom_Park/webmobile-sub2"><h2 class="headline mb-3 text-xs-center">Repository</h2></a>
         <Graph/>
       </v-flex>
     </v-layout>
