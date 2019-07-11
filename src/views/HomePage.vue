@@ -49,6 +49,7 @@
 </template>
 
 <script>
+const axios = require('axios')
 import ImgBanner from "../components/ImgBanner";
 import AboutUs from "../components/AboutUs";
 import PortfolioList from "../components/PortfolioList";
