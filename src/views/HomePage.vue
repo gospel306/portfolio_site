@@ -23,7 +23,12 @@
     
     <!-- 3. 기능 링크 -->
     <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
-
+    <v-layout hidden-xs-only sm6>
+        <v-flex xs12>
+          <h2 class="headline my-5 text-xs-center Text"><a href=https://lab.ssafy.com/HanBeom_Park/webmobile-sub2>Repository</a></h2>
+          <Graph/>
+        </v-flex>
+      </v-layout>
   </div>
 </template>
 
@@ -34,7 +39,7 @@ import AboutUs from "../components/AboutUs";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
-// import Graph from "../components/RepositoryGraph";
+import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
   data() {
@@ -51,7 +56,7 @@ export default {
     PortfolioList,
     PostList,
     RepositoryList,
-    // Graph
+    Graph
   },
 
   methods: {
