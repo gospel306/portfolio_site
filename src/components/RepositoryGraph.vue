@@ -8,11 +8,7 @@ export default{
     data(){
         return{
             commits: [],
-            series:[{
-                name: "total commits",
-                type:'column',
-                data: []
-            },
+            series:[
             {
                 name: "박한범",
                 type: 'line',
@@ -37,6 +33,7 @@ export default{
             chartOptions:{
                 chart:{
                     height: 350,
+                    type: 'line'
                 },
                 stroke:{
                     curve: 'smooth'
@@ -56,11 +53,6 @@ export default{
                 },
                 yaxis:[
                     {
-                        title: {
-                            text: 'total'
-                        }
-                    }
-                    ,{
                         opposite: true,
                         title:{
                             text: 'each'
@@ -82,7 +74,6 @@ export default{
             this.commits = response
 
             const commits = this.commits;
-            const counts = {};
             const com1 = {};
             const com2 = {};
             const com3 = {};
@@ -97,7 +88,6 @@ export default{
             var diff = Math.abs(now.getTime() - date.getTime())
             diff = Math.ceil(diff/(1000*3600*24))
             for(var i = 0;i <= diff;i++){
-                counts[ddate] = 0;
                 com1[ddate] = 0;
                 com2[ddate] = 0;
                 com3[ddate] = 0;
@@ -106,7 +96,6 @@ export default{
                 while(ddate == current){
                     if(commits[num].action_name == "pushed to"){
                         var n = commits[num].push_data.commit_count;
-                        counts[ddate]+=n;
                         var id = commits[num].author_id;
                         if(id == 336){
                             com1[ddate] += n;
@@ -136,12 +125,10 @@ export default{
                     }
                 },
                 xaxis:{
-                    categories: Object.keys(counts)
+                    categories: Object.keys(com1)
                 }
             }
-            this.series=[{
-                data: Object.values(counts)
-            },
+            this.series=[
             {
                 data: Object.values(com1)
             },{
