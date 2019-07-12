@@ -42,7 +42,7 @@
                         <v-btn class="cancelBtn" color="green darken-1" flat @click="dialog = false">cancel</v-btn>
                         <v-btn class="saveBtn" color="green darken-1" flat @click="changeImage" style="display:none">OK</v-btn>
                         <v-btn class="selectBtn" color="green darken-1" flat  @click="$refs.file.click()">Select IMG</v-btn>
-                        <v-btn class="randomBtn"color="green darken-1" flat @click="randomImage">Random</v-btn>
+                        <v-btn class="randomBtn" color="green darken-1" flat @click="randomImage">Random</v-btn>
                       </v-card-actions>
                     </v-card>
                   </v-dialog>
