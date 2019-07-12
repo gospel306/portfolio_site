@@ -102,7 +102,7 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <v-btn absolute color="orange" class="white--text" fab large right top>
+                <v-btn absolute color="orange" class="white--text" fab large right top to="/login">
                   <v-icon>fa-sign-in</v-icon>
                 </v-btn>
                 <div>

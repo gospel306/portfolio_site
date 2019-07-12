@@ -37,7 +37,7 @@ export default {
     Myheader,
    },
    data() {
-
+     this.$store.state.user=null;
       return {
          //
       }
