@@ -4,8 +4,7 @@
        title="Weather"
        :latitude="latitude"
        :longitude="longitude"
-       language="en"
-       units="uk">
+       language="en">
       </weather>
 </template>
 <script>
@@ -15,8 +14,8 @@
   export default{
     data(){
       return{
-        latitude: '',
-        longitude: ''
+        latitude: '0',
+        longitude: '0'
       }
     },
     components:{
@@ -27,6 +26,7 @@
       navigator.geolocation.getCurrentPosition(function(pos){
         vm.latitude = pos.coords.latitude.toString()
         vm.longitude = pos.coords.longitude.toString()
+        navigator.geolocation.clearWatch(pos)
       })
     }
   }

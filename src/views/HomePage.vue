@@ -37,7 +37,7 @@ import MasterPiece from "../components/MasterPiece";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
-// import Graph from "../components/RepositoryGraph";
+import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
   data() {
@@ -45,34 +45,45 @@ export default {
       text: "번역기능 확인하는 글"
     };
   },
+  mounted(){
+    this.ax()
+  },
   components: {
     ImgBanner,
     AboutUs,
     MasterPiece,
     PortfolioList,
     PostList,
+<<<<<<< HEAD
     RepositoryList
     // Graph
+=======
+    RepositoryList,
+    Graph
+>>>>>>> 1eef5299caeb289e9a04a4af5a278b2b75553019
   },
+
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
     },
     translate: function(text) {
       axios({
-        method: "post",
-        url: "https://translation.googleapis.com/language/translate/v2",
-        params: {
-          source: "ko",
-          target: "en",
-          q: text,
-          key: "AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA"
-        }
-      }).then(res => {
-        console.log(res.data.data.translations[0].translatedText);
-        document.getElementById("demo").innerHTML =
-          res.data.data.translations[0].translatedText;
-      });
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'ko',
+          target : 'en',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => { 
+        console.log(res.data.data.translations[0].translatedText)
+        document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
+      })
+    },
+    ax : function() {
+      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
     }
   }
 };

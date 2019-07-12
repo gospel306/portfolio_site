@@ -68,9 +68,9 @@ export default {
                       title: 'Success!!!',
                       text: '썸네일이 해당 링크에 업로드 되었습니다.',
                       footer: '<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>'
-                    })
+                    });
                     $(".ThumbnailBtn").html('선택 완료');
-                    $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank">'+res.data.link+'</a>');
+                    $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank" class="imgLink">'+res.data.link+'</a>');
                 },
                 error: function () {
                     alert("Failed");
@@ -94,9 +94,11 @@ export default {
   },
   methods:{
     postPortfolio(){
-      var imgLink = $(".ThumbnailLink").val();
+      var imgLink = $(".imgLink").html();
       alert(imgLink);
       FirebaseService.postPortfolio(this.title,this.editorData,imgLink);
+      alert("글 작성 완료 홈페이지로 돌아갑니다.");
+      this.$router.push('/');
     }
   }
 }
@@ -107,5 +109,12 @@ export default {
 .ck-editor__editable {
   min-height: 500px;
   width: 100%;
+}
+
+a:link{
+  color: black;
+}
+a:hover{
+  color: #519dca;
 }
 </style>
