@@ -42,6 +42,13 @@ export default {
       console.log('azz')
       axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='로그인 페이지 방문'")
     }
-	}
+  },
+  created:function(){
+      if (this.$store.state.user!=null) {
+        alert("이미 로그인 되어있습니다.\n로그아웃 후 이용해주세요.")
+        this.$router.push('/');
+      }
+    
+  }
 }
 </script>
