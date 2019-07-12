@@ -31,6 +31,7 @@ export default {
 					return docSnapshots.docs.map((doc) => {
 						let data = doc.data()
 						data.created_at = new Date(data.created_at.toDate())
+						alert(data.created_at)
 						return data
 					})
 				})

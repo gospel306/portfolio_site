@@ -2,8 +2,14 @@
   <v-layout>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
+        <v-flex xs12 text-xs-center>
         <v-btn round color="#32cd32" dark v-on="on" style="width:100%;"><v-icon size="25" class="mr-2">widgets</v-icon>회원 로그인</v-btn>
+        <v-btn round color="#df4a31" dark v-on:click="loginWithGoogle" style="width:100%;"><v-icon size="25" class="mr-2">fa-google</v-icon> Google 로그인</v-btn>
+          <v-btn round color="#3b5998" dark v-on:click="loginWithFacebook" style="width:100%;"><v-icon size="25" class="mr-2">fa-facebook</v-icon> Facebook 로그인</v-btn>
+         
+        </v-flex>
       </template>
+      
       <v-card>
         <v-card-title>
           <span class="headline">Login</span>
@@ -44,6 +50,17 @@ import 'firebase/auth';
     })
     ,
     methods:{
+      async loginWithGoogle() {
+			const result = await FirebaseService.loginWithGoogle()
+      this.$store.state.accessToken = result.credential.accessToken
+      this.$store.state.user = result.user
+    },
+		async loginWithFacebook() {
+			const result = await FirebaseService.loginWithFacebook()
+			this.$store.state.accessToken = result.credential.accessToken
+      this.$store.state.user = result.user
+      
+    },
       	toggleSignIn() {
     var that=this;
       if (firebase.auth().currentUser) {
