@@ -46,14 +46,20 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <v-btn absolute color="orange" class="white--text" fab large right top>
-                  <v-icon>fa-language</v-icon>
-                </v-btn>
+                <p v-if = "flag === 'A'">
+                  <v-btn absolute color="orange" class="white--text" fab large right top  v-on:click="kotoen(text)"  >
+                     <v-icon>fa-language</v-icon>
+                   </v-btn>
+                </p>
+                <p v-else>
+                  <v-btn absolute color="orange" class="white--text" fab large right top  v-on:click="entoko(text)"  >
+                    <v-icon>fa-language</v-icon>
+                  </v-btn>
+                </p>
                 <div>
                   <h3 class="headline mb-2">한/영 번역</h3>
-                  <p>
-                    번역은 어떤 언어로 쓰인 글을 다른 언어로 된 상응하는 의미의 글로 전달하는 일이다.
-                    정확한 번역을 위해서는 원전을 이해하기 위한 문화적인 배경지식과 옮겨오는 언어의 정확하고 문학적인 문장력이 필요하다.
+                  <p id="ext">
+                    {{text}}
                   </p>
                 </div>
               </v-card-text>
@@ -89,8 +95,49 @@
 </template>
 
 <script>
+const axios = require("axios");
+
 export default {
-  name: "MasterPiece"
+  name: "MasterPiece",
+  data() {
+    return {
+      flag: 'A',
+      text: " 번역은 어떤 언어로 쓰인 글을 다른 언어로 된 상응하는 의미의 글로 전달하는 일이다. \n  정확한 번역을 위해서는 원전을 이해하기 위한 문화적인 배경지식과 옮겨오는 언어의 정확하고 문학적인 문장력이 필요하다."
+    };
+  },
+  methods : {
+    kotoen: function(text) {
+      this.flag = 'B'
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'ko',
+          target : 'en',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
+      })
+
+    },
+    entoko: function(text) {
+      this.flag = 'A'
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'en',
+          target : 'ko',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
+      })
+    },
+  }
 };
 </script>
 
