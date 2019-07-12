@@ -25,7 +25,9 @@
     <!-- 3. 걸작 -->
     <MasterPiece></MasterPiece>
 
-    <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
+    <div id = 'ext'>{{text}}</div>
+    <v-btn v-on:click="kotoen(text)">영어로</v-btn>
+    <v-btn v-on:click="entoko(text)">한글로</v-btn>
   </div>
 </template>
 
@@ -54,20 +56,15 @@ export default {
     MasterPiece,
     PortfolioList,
     PostList,
-<<<<<<< HEAD
-    RepositoryList
-    // Graph
-=======
     RepositoryList,
-    Graph
->>>>>>> 1eef5299caeb289e9a04a4af5a278b2b75553019
+    // Graph
   },
 
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
     },
-    translate: function(text) {
+    kotoen: function(text) {
       axios({
         method : 'post',
         url : 'https://translation.googleapis.com/language/translate/v2',
@@ -77,16 +74,31 @@ export default {
           q : text,
           key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
         },
-      }).then(res => { 
-        console.log(res.data.data.translations[0].translatedText)
-        document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
       })
     },
-    ax : function() {
+    entoko: function(text) {
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'en',
+          target : 'ko',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
+      })
+    },
+    ax : function()  {
       axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
     }
   }
 };
+
+
 </script>
 
 
