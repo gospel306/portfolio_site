@@ -119,11 +119,6 @@ export default{
             }
             
             this.chartOptions = {
-                chart:{
-                    zoom:{
-                        enabled: true
-                    }
-                },
                 xaxis:{
                     categories: Object.keys(com1)
                 }
