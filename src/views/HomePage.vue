@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="Entrance">
     <!-- 1. 메인 이미지 배너 -->
     <ImgBanner
       imgSrc="https://images.unsplash.com/photo-1508157942875-586a83457569?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80"
@@ -16,21 +16,24 @@
           <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
       </div>
+      
     </ImgBanner>
-
-    <!-- 2. About Us -->
+    <div id="AboutUs" style="margin-bottom: 110px;"></div>
+    <!-- 2. 미생 -->
     <AboutUs></AboutUs>
-    
-    <!-- 3. 기능 링크 -->
-    <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
 
+    <!-- 3. 걸작 -->
+    <MasterPiece></MasterPiece>
+
+    <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
   </div>
 </template>
 
 <script>
-const axios = require('axios')
+const axios = require("axios");
 import ImgBanner from "../components/ImgBanner";
 import AboutUs from "../components/AboutUs";
+import MasterPiece from "../components/MasterPiece";
 import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
@@ -45,9 +48,10 @@ export default {
   components: {
     ImgBanner,
     AboutUs,
+    MasterPiece,
     PortfolioList,
     PostList,
-    RepositoryList,
+    RepositoryList
     // Graph
   },
   methods: {
