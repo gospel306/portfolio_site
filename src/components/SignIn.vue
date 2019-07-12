@@ -54,12 +54,13 @@ import 'firebase/auth';
 			const result = await FirebaseService.loginWithGoogle()
       this.$store.state.accessToken = result.credential.accessToken
       this.$store.state.user = result.user
+      this.$router.push('/') 
     },
 		async loginWithFacebook() {
 			const result = await FirebaseService.loginWithFacebook()
 			this.$store.state.accessToken = result.credential.accessToken
       this.$store.state.user = result.user
-      
+      this.$router.push('/') 
     },
       	toggleSignIn() {
     var that=this;
@@ -88,9 +89,10 @@ import 'firebase/auth';
        }
         // Sign in with email and pass.
         // [START authwithemail]
+        
       firebase.auth().signInWithEmailAndPassword(email, password).then(function(result){
-        		//	that.$store.state.accessToken = result.credential.accessToken
-			        //that.$store.state.user = result.user
+        		//that.$store.state.accessToken = result.credential.accessToken
+			      that.$store.state.user = result.user
             alert("로그인 성공!")
             //alert(that.$store.state.user)
             var user = firebase.auth().currentUser;
