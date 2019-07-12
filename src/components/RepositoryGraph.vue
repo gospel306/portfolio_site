@@ -95,18 +95,17 @@ export default{
                 com5[ddate] = 0;
                 while(ddate == current){
                     if(commits[num].action_name == "pushed to"){
-                        var n = commits[num].push_data.commit_count;
                         var id = commits[num].author_id;
                         if(id == 336){
-                            com1[ddate] += n;
+                            com1[ddate] ++;
                         }else if(id == 281){
-                            com2[ddate] += n;
+                            com2[ddate] ++;
                         }else if(id == 345){
-                            com3[ddate] += n;
+                            com3[ddate] ++;
                         }else if(id == 367){
-                            com4[ddate] += n;
+                            com4[ddate] ++;
                         }else if(id == 291){
-                            com5[ddate] += n;
+                            com5[ddate] ++;
                         }
                     }
                     num--;
@@ -119,11 +118,6 @@ export default{
             }
             
             this.chartOptions = {
-                chart:{
-                    zoom:{
-                        enabled: true
-                    }
-                },
                 xaxis:{
                     categories: Object.keys(com1)
                 }
