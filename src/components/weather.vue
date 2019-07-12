@@ -4,7 +4,8 @@
        title="Weather"
        :latitude="latitude"
        :longitude="longitude"
-       language="en">
+       language="en"
+       >
       </weather>
 </template>
 <script>

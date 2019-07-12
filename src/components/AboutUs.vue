@@ -103,7 +103,7 @@
               <span style="font-size: 12px;">세번째 미생</span>,
               <strong>정태현 팀원</strong>
             </div>
-            <span>부산 출생 | 파이어베이스 </span>
+            <span>부산 출생 | 파이어베이스</span>
             <br />
             <span>"B형 치게 해주세요..."</span>
           </div>
@@ -137,7 +137,8 @@
               <span style="font-size: 12px;">네번째 미생</span>,
               <strong>김동욱 팀원</strong>
             </div>
-            <span>수원 출생 | 깃랩 그래프</span><br>
+            <span>수원 출생 | 깃랩 그래프</span>
+            <br />
             <span>"AI가 세상을 지배한다..."</span>
           </div>
         </v-card-title>
@@ -170,7 +171,8 @@
               <span style="font-size: 12px;">다섯번째 미생</span>,
               <strong>오명현 팀원</strong>
             </div>
-            <span>대전 출생 | 이미지 컴포넌트</span><br>
+            <span>대전 출생 | 이미지 컴포넌트</span>
+            <br />
             <span>"틀딱이세요?"</span>
           </div>
         </v-card-title>
@@ -243,7 +245,7 @@ export default {
 /* 모바일 화면에선 한명씩 크게 ^^ */
 @media screen and (max-width: 650px) {
   .column {
-    width: 50%;
+    width: 100%;
     display: block;
     margin: 0 auto;
   }
