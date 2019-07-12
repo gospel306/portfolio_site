@@ -63,7 +63,7 @@ export default {
     PortfolioList,
     PostList,
     RepositoryList,
-    Graph
+    Graph,
   },
 
   methods: {
