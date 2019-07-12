@@ -18,22 +18,13 @@
       </div>
       
     </ImgBanner>
-    <div id="AboutUs" style="margin-bottom: 110px;"></div>
     <!-- 2. 미생 -->
+    <div id="AboutUs" style="margin-bottom: 110px;"></div>
     <AboutUs></AboutUs>
 
     <!-- 3. 걸작 -->
+    <div id="MasterPiece" style="margin-bottom: 80px;"></div>
     <MasterPiece></MasterPiece>
-
-    <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
-
-    <v-layout hidden-xs-only sm6 light>
-        <v-flex xs12>
-          <a href=https://lab.ssafy.com/HanBeom_Park/webmobile-sub2><h2 class="headline my-5 text-xs-center Text">Repository</h2></a>
-          <Graph/>
-        </v-flex>
-    </v-layout>
-
   </div>
 </template>
 
@@ -48,11 +39,6 @@ import RepositoryList from "../components/RepositoryList";
 import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
-  data() {
-    return {
-      text: "번역기능 확인하는 글"
-    };
-  },
   mounted(){
     this.ax()
   },
@@ -63,14 +49,14 @@ export default {
     PortfolioList,
     PostList,
     RepositoryList,
-    Graph
+    // Graph
   },
 
   methods: {
     getImgUrl(img) {
       return require("../assets/" + img);
     },
-    translate: function(text) {
+    kotoen: function(text) {
       axios({
         method : 'post',
         url : 'https://translation.googleapis.com/language/translate/v2',
@@ -80,16 +66,31 @@ export default {
           q : text,
           key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
         },
-      }).then(res => { 
-        console.log(res.data.data.translations[0].translatedText)
-        document.getElementById("demo").innerHTML = res.data.data.translations[0].translatedText;
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
       })
     },
-    ax : function() {
+    entoko: function(text) {
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'en',
+          target : 'ko',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
+      })
+    },
+    ax : function()  {
       axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
     }
   }
 };
+
+
 </script>
 
 
