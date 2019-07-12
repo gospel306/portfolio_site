@@ -37,14 +37,8 @@ import PortfolioList from "../components/PortfolioList";
 import PostList from "../components/PostList";
 import RepositoryList from "../components/RepositoryList";
 import Graph from "../components/RepositoryGraph";
-
 export default {
   name: "HomePage",
-  data() {
-    return {
-      text: "번역기능 확인하는 글"
-    };
-  },
   mounted(){
     this.ax()
   },
