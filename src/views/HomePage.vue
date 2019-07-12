@@ -18,13 +18,13 @@
       </div>
       
     </ImgBanner>
-    <div id="AboutUs" style="margin-bottom: 110px;"></div>
     <!-- 2. 미생 -->
+    <div id="AboutUs" style="margin-bottom: 110px;"></div>
     <AboutUs></AboutUs>
 
     <!-- 3. 걸작 -->
+    <div id="MasterPiece" style="margin-bottom: 80px;"></div>
     <MasterPiece></MasterPiece>
-
   </div>
 </template>
 
