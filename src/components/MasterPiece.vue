@@ -98,32 +98,6 @@
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
-                src="https://images.unsplash.com/photo-1531030874896-fdef6826f2f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                aspect-ratio="2.75"
-              ></v-img>
-              <v-card-text class="pt-4" style="position: relative;">
-                <v-btn absolute color="orange" class="white--text" fab large right top>
-                  <v-icon>fa-chart-bar</v-icon>
-                </v-btn>
-                <div>
-                  <h3 class="headline mb-2">Gitlab Graph</h3>
-                  <p>
-                    - Gitlab 그래프를 가시적으로 확인
-                    <br />- 모바일 사이즈 그래프 미노출
-                    <br />- Repository 클릭시 해당 Repository 페이지로 이동
-                    <br />
-                  </p>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-hover>
-        </v-flex>
-
-        <!-- 사용자 인증 -->
-        <v-flex xs12 sm4>
-          <v-hover class="cursor">
-            <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-              <v-img
                 src="https://images.unsplash.com/photo-1429216967620-ece20ff3a5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80"
                 aspect-ratio="2.75"
               ></v-img>
