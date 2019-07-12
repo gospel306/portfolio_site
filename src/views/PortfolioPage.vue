@@ -17,6 +17,7 @@
 </template>
 
 <script>
+const axios = require('axios')
 import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
 
@@ -25,6 +26,15 @@ export default {
 	components: {
 		ImgBanner,
 		PortfolioList,
-	},
+  },
+  
+  mounted(){
+    this.ax()
+  },
+  methods :{
+    ax : function() {
+      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='포트폴리오 페이지 방문'")
+    }
+  }
 }
 </script>
