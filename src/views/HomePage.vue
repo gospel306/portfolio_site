@@ -23,12 +23,12 @@
     
     <!-- 3. 기능 링크 -->
     <v-btn id="demo" v-on:click="translate(text)">글 번역하기</v-btn>
-    <v-layout hidden-xs-only sm6>
+    <v-layout hidden-xs-only sm6 light>
         <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center Text"><a href=https://lab.ssafy.com/HanBeom_Park/webmobile-sub2>Repository</a></h2>
+          <a href=https://lab.ssafy.com/HanBeom_Park/webmobile-sub2><h2 class="headline my-5 text-xs-center Text">Repository</h2></a>
           <Graph/>
         </v-flex>
-      </v-layout>
+    </v-layout>
   </div>
 </template>
 
