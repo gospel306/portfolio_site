@@ -18,16 +18,13 @@
       </div>
       
     </ImgBanner>
-    <div id="AboutUs" style="margin-bottom: 110px;"></div>
     <!-- 2. 미생 -->
+    <div id="AboutUs" style="margin-bottom: 110px;"></div>
     <AboutUs></AboutUs>
 
     <!-- 3. 걸작 -->
+    <div id="MasterPiece" style="margin-bottom: 80px;"></div>
     <MasterPiece></MasterPiece>
-
-    <div id = 'ext'>{{text}}</div>
-    <v-btn v-on:click="kotoen(text)">영어로</v-btn>
-    <v-btn v-on:click="entoko(text)">한글로</v-btn>
   </div>
 </template>
 
