@@ -10,7 +10,7 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items class="hidden-xs-only">
-          <v-btn class="menus" href="#Entrance" flat>
+             <v-btn class="menus" href="#Entrance" flat>
             대문
             <span class="chinese">大門</span>
           </v-btn>
@@ -22,6 +22,16 @@
             명작
             <span class="chinese">名作</span>
           </v-btn>
+
+          <v-card v-if="logincheck==true" class="text-md-right" >
+          <div>
+            <span><br/>반갑습니다. {{this.$store.state.user.email}}님 </span>
+          </div>
+          <v-btn flat color="orange" @click="logout">로그아웃</v-btn>
+     
+        </v-card>
+
+                
         </v-toolbar-items>
 
         <v-menu class="hidden-sm-and-up">
@@ -47,6 +57,8 @@
 
 
 <script>
+import firebase from 'firebase/app';
+import 'firebase/auth';
 export default {
   name: "Myheader",
   props: {},
@@ -59,6 +71,20 @@ export default {
     ]
   }),
   methods: {
+    logout(){
+      var that=this;
+      firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      alert("로그아웃 되었습니다!")
+        that.$store.state.user=null;
+      //alert(that.$store.state.user)
+        
+      }).catch(function(error) {
+       // An error happened.
+      alert("로그아웃에 실패하였습니다")
+      alert(error)
+      });
+    },
     bookmark: function() {
       if (window.sidebar && window.sidebar.addPanel) {
         // Firefox <23
@@ -84,7 +110,6 @@ export default {
         return true;
       } else {
         // For the other browsers (mainly WebKit) we use a simple alert to inform users that they can add to bookmarks with ctrl+D/cmd+D
-
         alert(
           "You can add this page to your bookmarks by pressing " +
             (navigator.userAgent.toLowerCase().indexOf("mac") != -1
@@ -96,9 +121,22 @@ export default {
       // If you have something in the `href` of your trigger
       return false;
     }
-  }
-};
+  },
+   computed: {
+    logincheck(){
+       if(this.$store.state.user!=null){
+          this.menu.splice(3);
 
+         return true;
+      }else{
+        this.menu.push({ icon: 'login', title: '로그인' , link : "/login"});
+          this.$store.state.user=null;
+         return false;
+       }
+     }
+   },
+
+};
 document.querySelectorAll('v-btn[href^="#"]').forEach(anchor => {
   console.log('Hi!')
   console.log(anchor)
