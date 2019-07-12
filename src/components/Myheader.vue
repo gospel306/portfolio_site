@@ -22,10 +22,8 @@
             명작
             <span class="chinese">名作</span>
           </v-btn>
-          <v-card v-if="logincheck==true" class="text-md-right" >
-        
-       
 
+          <v-card v-if="logincheck==true" class="text-md-right" >
           <div>
             <span><br/>반갑습니다. {{this.$store.state.user.email}}님 </span>
           </div>
@@ -123,7 +121,21 @@ export default {
       // If you have something in the `href` of your trigger
       return false;
     }
-  }
+  },
+   computed: {
+    logincheck(){
+       if(this.$store.state.user!=null){
+          this.menu.splice(3);
+
+         return true;
+      }else{
+        this.menu.push({ icon: 'login', title: '로그인' , link : "/login"});
+          this.$store.state.user=null;
+         return false;
+       }
+     }
+   },
+
 };
 document.querySelectorAll('v-btn[href^="#"]').forEach(anchor => {
   console.log('Hi!')
