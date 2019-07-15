@@ -124,6 +124,7 @@ export default {
   },
    computed: {
     logincheck(){
+      this.$store.state.user=firebase.auth().currentUser;
        if(this.$store.state.user!=null){
          return true;
       }else{
