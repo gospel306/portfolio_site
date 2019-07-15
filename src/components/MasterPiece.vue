@@ -13,7 +13,6 @@
     </div>
     <v-container grid-list-md>
       <v-layout wrap>
-
         <!-- 사진첨부 -->
         <v-flex xs12 sm6>
           <v-hover class="cursor">
@@ -83,7 +82,7 @@
         </v-flex>
 
         <!-- Gitlab 레포 -->
-        <v-flex xs12 sm6>
+        <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -120,7 +119,7 @@
         </v-flex>
 
         <!-- 사용자 인증 -->
-        <v-flex xs12 sm6>
+        <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -128,11 +127,9 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <a href="/login">
-                <v-btn absolute color="orange" class="white--text" fab large right top>
+                <v-btn absolute color="orange" class="white--text" fab large right top to="/login">
                   <v-icon>fa-sign-in</v-icon>
                 </v-btn>
-                </a>
                 <div>
                   <h3 class="headline mb-2">사용자 인증</h3>
                   <p>
@@ -147,7 +144,7 @@
         </v-flex>
 
         <!-- 이미지 업로더 컴포넌트 -->
-        <!-- <v-flex xs12 sm4>
+        <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -168,7 +165,7 @@
               </v-card-text>
             </v-card>
           </v-hover>
-        </v-flex> -->
+        </v-flex>
 
         <!-- 날씨 정보 -->
         <v-flex xs12 sm6>
@@ -205,7 +202,7 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <a href="#Entrance">
+                <a href="#weather">
                   <v-btn absolute color="orange" class="white--text" fab large right top>
                     <v-icon>fa-smile</v-icon>
                   </v-btn>
@@ -281,6 +278,7 @@ export default {
                       if (result.value) {
                         $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank" class="imgLink">'+res.data.link+'</a>');
                         $(".saveBtn").css("display","inline");
+                        $(".randomBtn").css("display","none");
                         $(".cancelBtn").css("display","none");
                       }
                     });
@@ -355,7 +353,6 @@ export default {
 <style>
 .cursor {
   cursor: zoom-in;
-  z-index: 0;
 }
 
 .masterpiece__titleCh {
