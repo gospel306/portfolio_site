@@ -281,7 +281,6 @@ export default {
                       if (result.value) {
                         $(".ThumbnailLink").html('<a href='+res.data.link+' target="_blank" class="imgLink">'+res.data.link+'</a>');
                         $(".saveBtn").css("display","inline");
-                        $(".randomBtn").css("display","none");
                         $(".cancelBtn").css("display","none");
                       }
                     });
