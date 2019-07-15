@@ -44,7 +44,6 @@ export default {
     }
   },
   created:function(){
-    alert("gd:"+this.$store.state.user)
       if (this.$store.state.user!=null) {
         alert("이미 로그인 되어있습니다.\n로그아웃 후 이용해주세요.")
         this.$router.push('/');
