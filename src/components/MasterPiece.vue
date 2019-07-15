@@ -99,7 +99,12 @@
                   </template>
                   <v-card>
                     <v-card-title class="headline">Gitlab Repository Graph</v-card-title>
-                      <Graph/>
+                    <v-flex hidden-xs-only>
+                        <Graph/>
+                    </v-flex>
+                    <v-flex hidden-sm-and-up>
+                        <v-card-text hidden-sm-and-up>해당 페이지는 모바일화면에서는 표기할수 없습니다.<br/>다른 환경에서 접속해주세요.</v-card-text>
+                    </v-flex>
                     <v-card-actions>
                       <v-btn class="cancelBtn" color="green darken-1" flat @click="dialog2 = false" left>exit</v-btn>
                     </v-card-actions>
