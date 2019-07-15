@@ -13,33 +13,42 @@
     </div>
     <v-container grid-list-md>
       <v-layout wrap>
-
         <!-- 사진첨부 -->
         <v-flex xs12 sm6>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-              <v-img :src="PhotoImage" aspect-ratio="2.75"/>
+              <v-img
+                :src="PhotoImage"
+                aspect-ratio="2.75"
+              ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
+
                 <v-dialog class="dialog" v-model="dialog" persistent max-width="450">
-                  <template v-slot:activator="{ on }">
-                    <v-btn absolute color="orange" v-on="on" @click.stop="dialog" class="white--text" fab large right top>
-                      <v-icon>fa-image</v-icon>
-                    </v-btn>
-                  </template>
-                  <v-card>
-                    <v-card-title class="headline">사진 선택</v-card-title>
-                    <v-card-text>랜덤 이미지 또는 선택하는 사진을 업로드 해보세요!</v-card-text>
-                    <v-card-actions>
-                      <v-spacer></v-spacer>
-                      <span class="ThumbnailLink" style="display:none"></span>
-                      <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none"/>
-                      <v-btn class="cancelBtn" color="green darken-1" flat @click="dialog = false">cancel</v-btn>
-                      <v-btn class="saveBtn" color="green darken-1" flat @click="changeImage" style="display:none">OK</v-btn>
-                      <v-btn class="selectBtn" color="green darken-1" flat  @click="$refs.file.click()">Select IMG</v-btn>
-                      <v-btn class="randomBtn" color="green darken-1" flat @click="randomImage">Random</v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog>
+                      <template v-slot:activator="{ on }">
+
+
+                <v-btn absolute color="orange" v-on="on" @click.stop="dialog" class="white--text" fab large right top>
+                  <v-icon>fa-image</v-icon>
+                </v-btn>
+
+              </template>
+                    <v-card>
+                      <v-card-title class="headline">사진 선택</v-card-title>
+                      <v-card-text>랜덤 이미지 또는 선택하는 사진을 업로드 해보세요!</v-card-text>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <span class="ThumbnailLink" style="display:none"></span>
+                        <input type="file" ref="file" class="imgur" accept="image/*" data-max-size="5000" style="display:none"/>
+                        <v-btn class="cancelBtn" color="green darken-1" flat @click="dialog = false">cancel</v-btn>
+                        <v-btn class="saveBtn" color="green darken-1" flat @click="changeImage" style="display:none">OK</v-btn>
+                        <v-btn class="selectBtn" color="green darken-1" flat  @click="$refs.file.click()">Select IMG</v-btn>
+                        <v-btn class="randomBtn" color="green darken-1" flat @click="randomImage">Random</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+
+
+
                 <div>
                   <h3 class="headline mb-2">사진 첨부</h3>
                   <div>
@@ -83,7 +92,7 @@
         </v-flex>
 
         <!-- Gitlab 레포 -->
-        <v-flex xs12 sm6>
+        <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -91,20 +100,9 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <v-dialog class="dialog2" v-model="dialog2" persistent>
-                  <template v-slot:activator="{ on }">
-                    <v-btn absolute color="orange" v-on="on" @click.stop="dialog2" class="white--text" fab large right top>
-                      <v-icon>fa-chart-bar</v-icon>
-                    </v-btn>
-                  </template>
-                  <v-card>
-                    <v-card-title class="headline">Gitlab Repository Graph</v-card-title>
-                      <Graph/>
-                    <v-card-actions>
-                      <v-btn class="cancelBtn" color="green darken-1" flat @click="dialog2 = false" left>exit</v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog>
+                <v-btn absolute color="orange" class="white--text" fab large right top>
+                  <v-icon>fa-chart-bar</v-icon>
+                </v-btn>
                 <div>
                   <h3 class="headline mb-2">Gitlab Graph</h3>
                   <p>
@@ -120,7 +118,7 @@
         </v-flex>
 
         <!-- 사용자 인증 -->
-        <v-flex xs12 sm6>
+        <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -128,11 +126,9 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <a href="/login">
-                <v-btn absolute color="orange" class="white--text" fab large right top>
+                <v-btn absolute color="orange" class="white--text" fab large right top to="/login">
                   <v-icon>fa-sign-in</v-icon>
                 </v-btn>
-                </a>
                 <div>
                   <h3 class="headline mb-2">사용자 인증</h3>
                   <p>
@@ -147,7 +143,7 @@
         </v-flex>
 
         <!-- 이미지 업로더 컴포넌트 -->
-        <!-- <v-flex xs12 sm4>
+        <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -168,7 +164,7 @@
               </v-card-text>
             </v-card>
           </v-hover>
-        </v-flex> -->
+        </v-flex>
 
         <!-- 날씨 정보 -->
         <v-flex xs12 sm6>
@@ -205,7 +201,7 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <a href="#Entrance">
+                <a href="#weather">
                   <v-btn absolute color="orange" class="white--text" fab large right top>
                     <v-icon>fa-smile</v-icon>
                   </v-btn>
@@ -228,13 +224,10 @@
 
 <script>
 import $ from 'jquery';
-import Graph from './RepositoryGraph'
+
 const axios = require("axios");
 
 export default {
-  components:{
-    Graph
-  },
   mounted(){
     $('input[type=file]').on("change", function () {
       var change = this;
@@ -301,7 +294,6 @@ export default {
       flag: 'A',
       text: " 번역은 어떤 언어로 쓰인 글을 다른 언어로 된 상응하는 의미의 글로 전달하는 일이다. \n정확한 번역을 위해서는 원전을 이해하기 위한 문화적인 배경지식과 옮겨오는 언어의 정확하고 문학적인 문장력이 필요하다.",
       dialog:false,
-      dialog2:false,
       PhotoImage:"https://images.unsplash.com/photo-1481299490292-adef25f13c3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
 
     };
@@ -355,7 +347,6 @@ export default {
 <style>
 .cursor {
   cursor: zoom-in;
-  z-index: 0;
 }
 
 .masterpiece__titleCh {

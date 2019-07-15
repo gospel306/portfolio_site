@@ -6,15 +6,15 @@
       min-height="720"
       max-height="700"
     >
-      <v-layout align-center justify-center fill-height wrap>
-        <v-flex xs5 text-xs-center>
+      <v-layout align-center justify-center row fill-height>
+        <v-flex xs6 md12 text-xs-center>
           <span
             class="text-shadow display-3 font-weight-bold"
           >
             <slot name="text1" />
           </span>
         </v-flex>
-        <v-flex xs7 text-md-center>
+        <v-flex xs6 md12>
           <span
             class="text-shadow display-1 font-weight-light"
           >

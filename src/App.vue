@@ -23,7 +23,8 @@
 
 <script>
 const axios = require('axios')
-
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import store from './store'
 import Myfooter from './components/Myfooter'
 import Myheader from './components/Myheader'
@@ -38,6 +39,7 @@ export default {
    },
    data() {
      this.$store.state.user=null;
+     this.$store.state.user=firebase.auth().currentUser;
       return {
          //
       }
