@@ -16,7 +16,6 @@
           <p>아등바등 욕심부리며 살 필요가 없다.</p>
         </span>
       </div>
-      
     </ImgBanner>
     <!-- 2. 미생 -->
     <div id="AboutUs" style="margin-bottom: 110px;"></div>
@@ -39,8 +38,8 @@ import RepositoryList from "../components/RepositoryList";
 import Graph from "../components/RepositoryGraph";
 export default {
   name: "HomePage",
-  mounted(){
-    this.ax()
+  mounted() {
+    this.ax();
   },
   components: {
     ImgBanner,
@@ -48,7 +47,7 @@ export default {
     MasterPiece,
     PortfolioList,
     PostList,
-    RepositoryList,
+    RepositoryList
     // Graph
   },
 
@@ -58,39 +57,41 @@ export default {
     },
     kotoen: function(text) {
       axios({
-        method : 'post',
-        url : 'https://translation.googleapis.com/language/translate/v2',
-        params  :{
-          source : 'ko',
-          target : 'en',
-          q : text,
-          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
-        },
+        method: "post",
+        url: "https://translation.googleapis.com/language/translate/v2",
+        params: {
+          source: "ko",
+          target: "en",
+          q: text,
+          key: "AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA"
+        }
       }).then(res => {
-        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
-      })
+        document.getElementById("ext").innerText =
+          res.data.data.translations[0].translatedText;
+      });
     },
     entoko: function(text) {
       axios({
-        method : 'post',
-        url : 'https://translation.googleapis.com/language/translate/v2',
-        params  :{
-          source : 'en',
-          target : 'ko',
-          q : text,
-          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
-        },
+        method: "post",
+        url: "https://translation.googleapis.com/language/translate/v2",
+        params: {
+          source: "en",
+          target: "ko",
+          q: text,
+          key: "AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA"
+        }
       }).then(res => {
-        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
-      })
+        document.getElementById("ext").innerText =
+          res.data.data.translations[0].translatedText;
+      });
     },
-    ax : function()  {
-      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
+    ax: function() {
+      axios.get(
+        "https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'"
+      );
     }
   }
 };
-
-
 </script>
 
 
@@ -110,5 +111,8 @@ export default {
 .banner_2 {
   font-family: "Song Myung", serif;
   white-space: nowrap;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 </style>
