@@ -13,6 +13,7 @@
     </div>
     <v-container grid-list-md>
       <v-layout wrap>
+
         <!-- 사진첨부 -->
         <v-flex xs12 sm6>
           <v-hover class="cursor">
@@ -82,7 +83,7 @@
         </v-flex>
 
         <!-- Gitlab 레포 -->
-        <v-flex xs12 sm4>
+        <v-flex xs12 sm6>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -119,7 +120,7 @@
         </v-flex>
 
         <!-- 사용자 인증 -->
-        <v-flex xs12 sm4>
+        <v-flex xs12 sm6>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -144,7 +145,7 @@
         </v-flex>
 
         <!-- 이미지 업로더 컴포넌트 -->
-        <v-flex xs12 sm4>
+        <!-- <v-flex xs12 sm4>
           <v-hover class="cursor">
             <v-card class="feature" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
               <v-img
@@ -165,7 +166,7 @@
               </v-card-text>
             </v-card>
           </v-hover>
-        </v-flex>
+        </v-flex> -->
 
         <!-- 날씨 정보 -->
         <v-flex xs12 sm6>
@@ -353,6 +354,7 @@ export default {
 <style>
 .cursor {
   cursor: zoom-in;
+  z-index: 0;
 }
 
 .masterpiece__titleCh {
