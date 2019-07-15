@@ -128,9 +128,11 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <v-btn absolute color="orange" class="white--text" fab large right top to="/login">
+                <a href="/login">
+                <v-btn absolute color="orange" class="white--text" fab large right top>
                   <v-icon>fa-sign-in</v-icon>
                 </v-btn>
+                </a>
                 <div>
                   <h3 class="headline mb-2">사용자 인증</h3>
                   <p>
@@ -203,7 +205,7 @@
                 aspect-ratio="2.75"
               ></v-img>
               <v-card-text class="pt-4" style="position: relative;">
-                <a href="#weather">
+                <a href="#Entrance">
                   <v-btn absolute color="orange" class="white--text" fab large right top>
                     <v-icon>fa-smile</v-icon>
                   </v-btn>
