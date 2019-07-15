@@ -125,11 +125,8 @@ export default {
    computed: {
     logincheck(){
        if(this.$store.state.user!=null){
-          this.menu.splice(3);
-
          return true;
       }else{
-        this.menu.push({ icon: 'login', title: '로그인' , link : "/login"});
           this.$store.state.user=null;
          return false;
        }
