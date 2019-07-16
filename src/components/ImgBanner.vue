@@ -1,15 +1,25 @@
 <template>
   <div>
-    <v-img :src="imgSrc"
-           aspect-ratio="1.7"
-           min-height="700"
-           max-height="700"
-           >
+    <v-img
+      :src="imgSrc"
+      aspect-ratio="1.7"
+      min-height="720"
+      max-height="700"
+    >
       <v-layout align-center justify-center row fill-height>
-        <v-flex text-xs-center>
-          <span class="text-shadow display-2 font-weight-light">
-            <slot name="text"/>
+        <v-flex xs6 md12 text-xs-center>
+          <span
+            class="text-shadow display-3 font-weight-bold"
+          >
+            <slot name="text1" />
           </span>
+        </v-flex>
+        <v-flex xs6 md12>
+          <span
+            class="text-shadow display-1 font-weight-light"
+          >
+            <slot name="text2" />
+            </span>
         </v-flex>
       </v-layout>
     </v-img>
@@ -19,21 +29,17 @@
 
 
 <script>
-
 export default {
-	name: 'ImgBanner',
-	props: {
-		imgSrc: {type: String},
-		text: {type: String}
-	},
-	methods: {
-	},
-}
+  name: "ImgBanner",
+  props: {
+    imgSrc: { type: String },
+    text: { type: String }
+  },
+  methods: {}
+};
 </script>
 <style>
-
-  .text-shadow {
-    text-shadow: 0 0 15px rgb(255,255,255);
-  }
-
+.text-shadow {
+  text-shadow: 0 0 15px rgb(255, 255, 255);
+}
 </style>

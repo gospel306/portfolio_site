@@ -1,74 +1,114 @@
 <template>
-  <div>
-    <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
-    
-      <div style="line-height:1.2vw;" slot="text">Nothing is impossible<br></div>
+  <div id="Entrance">
+    <!-- 1. 메인 이미지 배너 -->
+    <ImgBanner
+      imgSrc="https://images.unsplash.com/photo-1508157942875-586a83457569?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80"
+    >
+      <div style="line-height:10vh;" slot="text1">
+        <span class="banner_1">空手來空手去</span>
+        <p class="banner_1_2">(공수래공수거)</p>
+      </div>
+      <div style="line-height: 6vh;" slot="text2">
+        <span class="banner_2">
+          <p>모든 사람은 빈 손으로 태어나 빈 손으로 떠난다.</p>
+          <p>살아가면서 아무리 재물을 탐하고</p>
+          <p>권력을 좇아도 결국 모두 부질없으므로,</p>
+          <p>아등바등 욕심부리며 살 필요가 없다.</p>
+        </span>
+      </div>
+      
     </ImgBanner>
-    <v-container>
-      <!-- About Me -->
-      <v-layout my-5>
-        <v-flex xs12 sm8>
-          <h2 class="headline mb-3 text-xs-center">About Me</h2>
-          <p class="mr-4" style=" font-size: 2vw; font-weight: 400; line-height: 32px; margin: 5 24px;">●이름 | 박한범 Park HanBeom<br/>●생년월일 | 1993.12.01<br/>●최종학력 | 순천향대학교 의료IT공학과 졸업<br/> 
-          ●자기소개 <br/> 현재 SSAFY 대전 캠퍼스에서 소프트웨어 교육을 받고 있습니다. 이번에는 Vue를 사용한 웹페이지 제작을 진행하고 있습니다!
-          아직 Vue가 서툴지만 열심히 공부해서 많이 배우고 싶습니다.<br/> </p>
-  
-        </v-flex>
-        <v-flex hidden-xs-only sm4>
-          <v-img :src="getImgUrl('myImg.jpg')" aspect-ratio="1.5"/>
-        </v-flex>
-      </v-layout>
+    <!-- 2. 미생 -->
+    <div id="AboutUs" style="margin-bottom: 110px;"></div>
+    <AboutUs></AboutUs>
 
-      <!-- Portfolio -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center">Portfolio</h2>
-          <v-btn color="info" dark to="portfolioWriter" right="true"><v-icon size="25" class="mr-2">fa-plus</v-icon> 추가하기</v-btn>
-
-          <PortfolioList></PortfolioList>
-        </v-flex>
-      </v-layout>
-
-      <!-- Post -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center">Post</h2>
-          <PostList :column="2"></PostList>
-        </v-flex>
-      </v-layout>
-
-
-      <!-- Github -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="headline my-5 text-xs-center">Project</h2>
-          <RepositoryList></RepositoryList>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    
+    <!-- 3. 걸작 -->
+    <div id="MasterPiece" style="margin-bottom: 80px;"></div>
+    <MasterPiece></MasterPiece>
   </div>
 </template>
 
 <script>
-
-import ImgBanner from '../components/ImgBanner'
-import PortfolioList from '../components/PortfolioList'
-
-import PostList from '../components/PostList'
-import RepositoryList from '../components/RepositoryList'
+const axios = require("axios");
+import ImgBanner from "../components/ImgBanner";
+import AboutUs from "../components/AboutUs";
+import MasterPiece from "../components/MasterPiece";
+import PortfolioList from "../components/PortfolioList";
+import PostList from "../components/PostList";
+import RepositoryList from "../components/RepositoryList";
+import Graph from "../components/RepositoryGraph";
 export default {
-	name: 'HomePage',
-	components: {
-		ImgBanner,
-		PortfolioList,
-		PostList,
-		RepositoryList
-	},
-	methods: {
-		getImgUrl(img) {
-			return require('../assets/' + img)
-		}
-	},
-}
+  name: "HomePage",
+  mounted(){
+    this.ax()
+  },
+  components: {
+    ImgBanner,
+    AboutUs,
+    MasterPiece,
+    PortfolioList,
+    PostList,
+    RepositoryList,
+    // Graph
+  },
+
+  methods: {
+    getImgUrl(img) {
+      return require("../assets/" + img);
+    },
+    kotoen: function(text) {
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'ko',
+          target : 'en',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
+      })
+    },
+    entoko: function(text) {
+      axios({
+        method : 'post',
+        url : 'https://translation.googleapis.com/language/translate/v2',
+        params  :{
+          source : 'en',
+          target : 'ko',
+          q : text,
+          key : 'AIzaSyAM3pZMOpmnKyKnhorj1s-LGK0hBe5gQbA',
+        },
+      }).then(res => {
+        document.getElementById("ext").innerText = res.data.data.translations[0].translatedText;
+      })
+    },
+    ax : function()  {
+      axios.get("https://us-central1-webmobile-sub2-639ef.cloudfunctions.net/addMessage?text='홈페이지방문'")
+    }
+  }
+};
+
+
 </script>
+
+
+<style>
+.body {
+  font-family: "Song Myung", serif;
+}
+.banner_1 {
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+  white-space: nowrap;
+}
+.banner_1_2 {
+  font-family: "Song Myung", serif;
+  white-space: nowrap;
+  font-size: 35px;
+}
+.banner_2 {
+  font-family: "Song Myung", serif;
+  white-space: nowrap;
+}
+</style>
